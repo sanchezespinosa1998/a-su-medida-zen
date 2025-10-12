@@ -11,19 +11,161 @@ import {
   Smile,
   Star,
 } from "lucide-react";
-import heroImage from "@/assets/hero-child.jpg";
-import miguelImage from "@/assets/miguel-olea.jpg";
 import formulaImage from "@/assets/formula-cientifica.jpg";
+import { useState, useEffect, useRef } from "react";
+
+// Componente para efecto typewriter en bucle
+const TypewriterCycle = () => {
+  const words = ["ciencia", "claridad", "resultados"];
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const currentWord = words[currentWordIndex];
+
+    if (!isDeleting) {
+      // Escribiendo
+      if (currentIndex < currentWord.length) {
+        const timeout = setTimeout(() => {
+          setDisplayText(currentWord.substring(0, currentIndex + 1));
+          setCurrentIndex(prev => prev + 1);
+        }, 100);
+        return () => clearTimeout(timeout);
+      } else {
+        // Terminó de escribir, espera un poco antes de empezar a borrar
+        const timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000);
+        return () => clearTimeout(timeout);
+      }
+    } else {
+      // Borrando
+      if (currentIndex > 0) {
+        const timeout = setTimeout(() => {
+          setDisplayText(currentWord.substring(0, currentIndex - 1));
+          setCurrentIndex(prev => prev - 1);
+        }, 50);
+        return () => clearTimeout(timeout);
+      } else {
+        // Terminó de borrar, pasa a la siguiente palabra
+        setIsDeleting(false);
+        setCurrentWordIndex(prev => (prev + 1) % words.length);
+      }
+    }
+  }, [currentIndex, isDeleting, currentWordIndex, words]);
+
+  return (
+    <span className="text-secondary">
+      {displayText}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+};
 
 const Home = () => {
+  const [laserProgress, setLaserProgress] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+  const benefitsEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+
+      const heroHeight = heroRef.current.offsetHeight;
+      const scrollPosition = window.scrollY;
+
+      // Calcula el progreso del láser basado en el scroll
+      // El láser bajará muy rápido (6x la velocidad)
+      const progress = Math.min((scrollPosition * 6) / heroHeight, 1);
+      setLaserProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Llamada inicial
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const benefits = [
-    { icon: MessageSquare, text: "Mejorar la comunicación con tu hijo" },
-    { icon: TrendingUp, text: "Reducir rabietas y comportamientos difíciles" },
-    { icon: Users, text: "Soluciones personalizadas para tu familia" },
-    { icon: Shield, text: "Cambios duraderos, no parches temporales" },
-    { icon: Brain, text: "Entender las razones detrás de la conducta" },
-    { icon: Heart, text: "Apoyo constante de un profesional que te comprende" },
-    { icon: Smile, text: "Felicidad para tu hijo y para ti" },
+    {
+      icon: MessageSquare,
+      title: "Mejorar la comunicación con tu hijo",
+      description: "Aprende técnicas específicas para comunicarte de manera efectiva con tu hijo, estableciendo conexiones más profundas y comprensión mutua. Desarrollamos estrategias adaptadas a la edad y personalidad de tu hijo para crear un ambiente de confianza y diálogo abierto.",
+      details: [
+        "Técnicas de comunicación no verbal",
+        "Estrategias para momentos difíciles",
+        "Crear espacios de diálogo seguros",
+        "Escucha activa y empática"
+      ]
+    },
+    {
+      icon: TrendingUp,
+      title: "Reducir rabietas y comportamientos difíciles",
+      description: "Transforma los momentos de crisis en oportunidades de aprendizaje. Te enseño a identificar los desencadenantes, prevenir situaciones conflictivas y manejar las emociones intensas de manera constructiva, creando un ambiente más tranquilo en casa.",
+      details: [
+        "Identificación de patrones de comportamiento",
+        "Técnicas de prevención y anticipación",
+        "Manejo de emociones intensas",
+        "Estrategias de calma y autocontrol"
+      ]
+    },
+    {
+      icon: Users,
+      title: "Soluciones personalizadas para tu familia",
+      description: "Cada familia es única, por eso desarrollo estrategias específicamente diseñadas para tu situación particular. Analizo tu contexto familiar, las necesidades específicas de tu hijo y creo un plan de acción que se adapte perfectamente a vuestra realidad.",
+      details: [
+        "Análisis personalizado de tu situación",
+        "Plan de acción adaptado a tu familia",
+        "Estrategias específicas para tu contexto",
+        "Seguimiento y ajustes continuos"
+      ]
+    },
+    {
+      icon: Shield,
+      title: "Cambios duraderos, no parches temporales",
+      description: "No buscamos soluciones rápidas que se olvidan al día siguiente. Trabajamos en cambios profundos y estructurales que perduran en el tiempo, creando bases sólidas para el desarrollo emocional y conductual de tu hijo a largo plazo.",
+      details: [
+        "Intervenciones basadas en evidencia científica",
+        "Cambios estructurales en el comportamiento",
+        "Desarrollo de habilidades permanentes",
+        "Prevención de recaídas"
+      ]
+    },
+    {
+      icon: Brain,
+      title: "Entender las razones detrás de la conducta",
+      description: "Más allá de tratar los síntomas, exploramos las causas profundas del comportamiento de tu hijo. Te ayudo a comprender qué está pasando por su mente y corazón, para que puedas responder de manera más efectiva y compasiva.",
+      details: [
+        "Análisis del desarrollo emocional",
+        "Comprensión de las necesidades subyacentes",
+        "Interpretación de señales no verbales",
+        "Conocimiento del desarrollo infantil"
+      ]
+    },
+    {
+      icon: Heart,
+      title: "Apoyo constante de un profesional que te comprende",
+      description: "No estás solo en este camino. Te acompaño en cada paso del proceso, ofreciéndote apoyo continuo, orientación profesional y la tranquilidad de saber que tienes a alguien que realmente entiende por lo que estás pasando como padre o madre.",
+      details: [
+        "Acompañamiento emocional continuo",
+        "Disponibilidad para consultas",
+        "Comprensión profunda de tu situación",
+        "Apoyo durante todo el proceso"
+      ]
+    },
+    {
+      icon: Smile,
+      title: "Felicidad para tu hijo y para ti",
+      description: "El objetivo final es que tanto tú como tu hijo disfrutéis de una relación más armoniosa y feliz. Trabajamos para que vuestra convivencia sea más placentera, que vuestro vínculo se fortalezca y que ambos sintáis más bienestar en el día a día.",
+      details: [
+        "Relación familiar más armoniosa",
+        "Mayor bienestar emocional",
+        "Fortalecimiento del vínculo padre-hijo",
+        "Ambiente familiar positivo y cálido"
+      ]
+    },
   ];
 
   const testimonials = [
@@ -43,59 +185,282 @@ const Home = () => {
       name: "Marcos C.",
       text: "La ayuda de Miguel no solo cambió a mi hijo, sino que nos dio a nosotros como padres la confianza que necesitábamos.",
     },
+    {
+      name: "Ana M.",
+      text: "En solo 3 sesiones vimos cambios increíbles. Miguel nos enseñó a conectar realmente con nuestro hijo.",
+    },
+    {
+      name: "Roberto L.",
+      text: "Las técnicas que aprendimos son simples pero muy efectivas. Nuestra casa es ahora un lugar de paz.",
+    },
+    {
+      name: "Carmen R.",
+      text: "Miguel nos ayudó a entender que cada niño es único. Sus consejos personalizados fueron exactamente lo que necesitábamos.",
+    },
+    {
+      name: "David P.",
+      text: "Mi hijo de 6 años ahora expresa sus emociones de manera saludable. Es increíble ver su transformación.",
+    },
   ];
 
   return (
-    <div className="min-h-screen">
+    <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Transforma la conducta de tu hijo con{" "}
-                <span className="text-primary">ciencia, claridad</span> y
-                resultados reales
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                La experiencia de quien ha estado en su lugar. Soluciones
-                personalizadas basadas en evidencia científica.
-              </p>
-              <Button size="lg" asChild className="text-lg px-8">
-                <Link to="/servicios">Empieza ahora</Link>
-              </Button>
+      <section ref={heroRef} className="relative overflow-hidden bg-primary min-h-screen flex items-center">
+        {/* Láser resplandeciente animado por scroll */}
+        <div
+          className="absolute left-1/2 transform -translate-x-1/2 z-0 pointer-events-none transition-opacity duration-300"
+          style={{
+            top: 0,
+            height: `${laserProgress * 100}%`,
+            opacity: laserProgress > 0 ? 1 : 0
+          }}
+        >
+          {/* Línea central del láser */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-cyan-300"></div>
+
+          {/* Resplandor exterior 1 */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-full bg-gradient-to-b from-cyan-400/60 via-blue-400/60 to-cyan-300/60 blur-sm"></div>
+
+          {/* Resplandor exterior 2 */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-full bg-gradient-to-b from-cyan-400/40 via-blue-400/40 to-cyan-300/40 blur-md"></div>
+
+          {/* Resplandor más amplio */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-full bg-gradient-to-b from-cyan-400/20 via-blue-400/20 to-cyan-300/20 blur-xl"></div>
+        </div>
+
+        {/* Efectos de resplandor de fondo sutiles */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Resplandor superior izquierdo */}
+          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-radial from-cyan-400/5 via-blue-400/3 to-transparent rounded-full blur-3xl animate-neon-glow"></div>
+
+          {/* Resplandor superior derecho */}
+          <div className="absolute top-32 right-16 w-80 h-80 bg-gradient-radial from-white/4 via-cyan-300/2 to-transparent rounded-full blur-3xl animate-neon-pulse"></div>
+
+          {/* Resplandor medio izquierdo */}
+          <div className="absolute top-1/2 left-20 w-64 h-64 bg-gradient-radial from-blue-400/4 via-white/2 to-transparent rounded-full blur-2xl animate-pulse"></div>
+
+          {/* Resplandor medio derecho */}
+          <div className="absolute top-1/2 right-24 w-72 h-72 bg-gradient-radial from-cyan-300/5 via-blue-300/2 to-transparent rounded-full blur-3xl animate-neon-glow"></div>
+
+          {/* Resplandor inferior izquierdo */}
+          <div className="absolute bottom-40 left-32 w-56 h-56 bg-gradient-radial from-white/3 via-cyan-400/2 to-transparent rounded-full blur-2xl animate-neon-pulse"></div>
+
+          {/* Resplandor inferior derecho */}
+          <div className="absolute bottom-48 right-20 w-64 h-64 bg-gradient-radial from-blue-300/4 via-white/2 to-transparent rounded-full blur-3xl animate-pulse"></div>
+        </div>
+
+        {/* Degradado azul oscuro en la parte superior */}
+        <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-slate-900 via-slate-800/70 to-transparent z-5"></div>
+
+        {/* Media elipse en la base con resplandor */}
+        <div className="absolute bottom-10 left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-10">
+          {/* Resplandor de neon alrededor de la forma */}
+          <div className="absolute -inset-6 bg-gradient-to-r from-cyan-400/40 via-blue-400/60 to-cyan-400/40 rounded-t-full blur-xl animate-pulse"></div>
+
+          {/* Forma base */}
+          <div className="absolute inset-0 bg-secondary rounded-t-full"></div>
+        </div>
+
+        {/* Efecto de neon resplandeciente en el borde */}
+        <div className="absolute bottom-10 left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-20 rounded-t-full overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-white/15 to-transparent blur-sm animate-pulse"></div>
+          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent blur-md animate-neon-glow"></div>
+          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-blue-400/15 to-transparent blur-sm animate-neon-pulse"></div>
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/25 to-transparent blur-[2px] animate-neon-glow"></div>
+        </div>
+
+
+        {/* Contenido central */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 md:pt-0 md:pb-24 w-full relative z-10 -translate-y-5">
+          <div className="text-center space-y-8">
+            {/* Badge con la fórmula */}
+            <div className="flex justify-center mb-6">
+              <div className="relative inline-block">
+                {/* Resplandor del borde exterior */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400/50 via-blue-400/70 to-cyan-400/50 rounded-full blur-sm animate-pulse"></div>
+
+                {/* Badge */}
+                <div className="relative inline-flex items-center gap-2.5 px-4 py-0.5 bg-primary/80 backdrop-blur-sm border border-cyan-400/80 rounded-full">
+                  {/* Cerebrito */}
+                  <svg className="w-4 h-4 text-cyan-300" fill="currentColor" viewBox="0 0 512 512">
+                    <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z" />
+                  </svg>
+                  <span className="text-white/90 font-sans text-base tracking-wide">Psicologia infanto-juvenil</span>
+                </div>
+              </div>
             </div>
-            <div className="relative">
-              <img
-                src={heroImage}
-                alt="Niño feliz sonriendo"
-                className="rounded-2xl shadow-soft w-full h-auto"
-              />
-            </div>
+
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white max-w-4xl mx-auto">
+              Transforma la conducta de tu hijo con{" "}
+              <TypewriterCycle />
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+              La experiencia de quien ha estado en su lugar. Soluciones
+              personalizadas basadas en evidencia científica.
+            </p>
           </div>
         </div>
+
+        {/* CTA encima de la forma redondeada - Círculo con cerebro */}
+        <Link to="/servicios" className="absolute bottom-[88px] left-1/2 transform -translate-x-1/2 z-30 group">
+          {/* Resplandor de neon alrededor del círculo */}
+          <div
+            className={`absolute rounded-full blur-md transition-all duration-500 ${laserProgress > 0.8
+              ? '-inset-4 bg-gradient-to-r from-cyan-400/40 via-blue-400/50 to-cyan-400/40 blur-lg'
+              : '-inset-3 bg-gradient-to-r from-cyan-400/40 via-blue-400/60 to-cyan-400/40'
+              }`}
+            style={laserProgress <= 0.8 ? { animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' } : {}}
+          ></div>
+
+          {/* Resplandor adicional intenso cuando el láser está cerca */}
+          {laserProgress > 0.8 && (
+            <>
+              <div className="absolute -inset-5 bg-gradient-to-r from-cyan-400/25 via-blue-400/35 to-cyan-400/25 rounded-full blur-xl"></div>
+              <div className="absolute -inset-6 bg-gradient-to-r from-cyan-300/15 via-blue-300/20 to-cyan-300/15 rounded-full blur-2xl"></div>
+            </>
+          )}
+
+          {/* Bocadillo que aparece en hover */}
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+            <div className="bg-white rounded-2xl px-6 py-3 shadow-xl whitespace-nowrap">
+              <span className="text-primary font-semibold text-lg">Empieza ahora</span>
+              {/* Flecha del bocadillo */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] w-4 h-4 bg-white transform rotate-45"></div>
+            </div>
+          </div>
+
+          {/* Círculo blanco con cerebro */}
+          <div
+            className={`relative w-[144px] h-[144px] bg-white rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1 active:scale-95 active:translate-y-0 ${laserProgress > 0.8
+              ? 'shadow-xl scale-105'
+              : 'shadow-lg'
+              }`}
+          >
+            <svg className="w-[80px] h-[80px] text-primary" fill="currentColor" viewBox="0 0 512 512">
+              <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z" />
+            </svg>
+          </div>
+        </Link>
+
+        {/* Indicador de scroll hacia abajo */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center justify-center gap-1.5 animate-bounce">
+          <div className="flex flex-col items-center justify-center gap-1.5">
+            <div className="w-1.5 h-1.5 bg-gray-800/70 rounded-full animate-scroll-dot-1"></div>
+            <div className="w-1.5 h-1.5 bg-gray-800/70 rounded-full animate-scroll-dot-2"></div>
+            <div className="w-1.5 h-1.5 bg-gray-800/70 rounded-full animate-scroll-dot-3"></div>
+          </div>
+        </div>
+
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-secondary py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <section className="bg-secondary py-16 md:py-24 relative overflow-hidden">
+
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Badge similar al del hero */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2.5 px-4 py-0.5 bg-white/50 backdrop-blur-sm border border-primary rounded-full">
+              {/* Cerebrito */}
+              <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 512 512">
+                <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z" />
+              </svg>
+              <span className="text-primary font-sans text-base tracking-wide">Intervención basada en ciencia</span>
+            </div>
+          </div>
+
+          <h2 className="text-3xl md:text-6xl font-bold text-center mb-10">
             ¿Qué puedes conseguir?
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="shadow-card hover:shadow-soft transition-shadow">
-                <CardContent className="p-6 flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
-                    <benefit.icon className="w-6 h-6 text-primary" />
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            {benefits.slice(0, 4).map((benefit, index) => (
+              <Card key={index} className="shadow-card hover:shadow-soft transition-all duration-300 hover:scale-[1.02]">
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-6">
+                    <div className="bg-primary/10 p-4 rounded-xl flex-shrink-0">
+                      <benefit.icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <div className="flex-1 space-y-4">
+                      <h3 className="text-2xl font-bold text-foreground">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed">
+                        {benefit.description}
+                      </p>
+                      <div className="grid gap-3 mt-6">
+                        {benefit.details.map((detail, detailIndex) => (
+                          <div key={detailIndex} className="flex items-center space-x-3">
+                            <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                            <span className="text-sm text-foreground">{detail}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-foreground pt-1">{benefit.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div ref={benefitsEndRef}></div>
+        </div>
+      </section>
+
+      {/* Benefits Section Part 2 - Fondo Blanco */}
+      <section className="bg-background py-16 md:py-24 relative overflow-hidden">
+        {/* Media elipse en la base en azul oscuro */}
+        <div className="absolute bottom-0 left-1/2 w-[calc(100vw+50px)] h-60 bg-primary transform -translate-x-1/2 translate-y-1/2 rounded-t-full z-10"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          {/* Badge */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2.5 px-4 py-0.5 bg-primary/10 backdrop-blur-sm border border-primary rounded-full">
+              {/* Cerebrito */}
+              <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 512 512">
+                <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z" />
+              </svg>
+              <span className="text-primary font-sans text-base tracking-wide">Apoyo continuo y resultados</span>
+            </div>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+            El acompañamiento que necesitas
+          </h2>
+          <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-12">
+            Más allá de las técnicas, ofrezco comprensión profunda y apoyo constante para transformar la vida de tu familia
+          </p>
+
+          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            {benefits.slice(4).map((benefit, index) => (
+              <Card key={index + 4} className="shadow-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-t-primary">
+                <CardContent className="p-8 text-center">
+                  <div className="flex justify-center mb-6">
+                    <div className="bg-gradient-to-br from-primary to-primary/80 p-5 rounded-2xl shadow-lg">
+                      <benefit.icon className="w-10 h-10 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-4">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-muted-foreground text-base leading-relaxed mb-6">
+                    {benefit.description}
+                  </p>
+                  <div className="space-y-3">
+                    {benefit.details.map((detail, detailIndex) => (
+                      <div key={detailIndex} className="flex items-start space-x-2 text-left">
+                        <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-sm text-foreground">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button size="lg" asChild variant="default">
+            <Button size="lg" asChild variant="outline" className="bg-white text-primary hover:bg-gray-50 border-primary px-12 py-7 text-xl transition-transform duration-300 hover:scale-110">
               <Link to="/servicios">
                 Consigue lo que quieres para tu hijo hoy
               </Link>
@@ -104,92 +469,53 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-24">
+      {/* Testimonials Section - Carrusel */}
+      <section className="py-16 md:py-24 bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          {/* Badge */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2.5 px-4 py-0.5 bg-white/20 backdrop-blur-sm border border-white/40 rounded-full">
+              {/* Icono de estrella */}
+              <Star className="w-4 h-4 text-white fill-white" />
+              <span className="text-white font-sans text-base tracking-wide">Testimonios</span>
+            </div>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
             Lo que dicen las familias
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="shadow-card">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex text-yellow-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-muted-foreground italic">
-                    "{testimonial.text}"
-                  </p>
-                  <p className="font-semibold text-primary">
-                    {testimonial.name}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+          <p className="text-lg text-white/90 text-center max-w-3xl mx-auto mb-12">
+            Familias reales que han transformado su vida con mi acompañamiento profesional
+          </p>
 
-      {/* About Miguel Section */}
-      <section className="bg-secondary py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div className="order-2 md:order-1">
-              <img
-                src={miguelImage}
-                alt="Miguel Olea - Psicólogo Infantil"
-                className="rounded-2xl shadow-soft w-full h-auto"
-              />
+          {/* Carrusel Container */}
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll space-x-6">
+              {/* Duplicamos los testimonios para el efecto de bucle infinito */}
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <Card key={index} className="flex-shrink-0 w-80 shadow-card hover:shadow-soft transition-shadow">
+                  <CardContent className="p-6 space-y-4">
+                    <div className="flex text-yellow-500">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-sm text-muted-foreground italic leading-relaxed">
+                      "{testimonial.text}"
+                    </p>
+                    <p className="font-semibold text-primary">
+                      {testimonial.name}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-            <div className="space-y-6 order-1 md:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Miguel Olea
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil.
-                Uno de los pocos especialistas con doble formación en psicología
-                clínica y análisis de conducta.
-              </p>
-              <p className="text-muted-foreground">
-                Mi método combina ciencia, empatía y resultados reales. Entiendo
-                lo que sienten las familias porque he estado ahí, y sé lo que
-                funciona porque lo he estudiado y aplicado durante años.
-              </p>
-              <Button size="lg" asChild>
-                <Link to="/servicios">Reserva ahora</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Scientific Formula Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Ciencia detrás de cada intervención
-            </h2>
-            <div className="bg-white p-8 rounded-2xl shadow-card">
-              <img
-                src={formulaImage}
-                alt="Fórmula científica del análisis de conducta"
-                className="w-full h-auto max-w-2xl mx-auto"
-              />
-            </div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Esta fórmula representa la precisión científica detrás de mis
-              intervenciones. No necesitas conocerla, solo saber que gracias a
-              ella logramos cambios reales y duraderos.
-            </p>
           </div>
         </div>
       </section>
 
       {/* Final CTA Section */}
-      <section className="gradient-hero text-white py-16 md:py-24">
+      <section className="bg-primary text-white py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             ¿Listo para transformar la vida de tu hijo?

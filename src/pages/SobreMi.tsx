@@ -163,6 +163,23 @@ const SobreMi = () => {
           </p>
         </div>
 
+        {/* Scientific Formula Section */}
+        <div className="max-w-4xl mx-auto text-center space-y-8 mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Ciencia detrás de cada intervención
+          </h2>
+          <div className="bg-white p-16 rounded-2xl shadow-card">
+            <div className="flex items-center justify-center">
+              <span className="text-8xl font-sans font-light text-primary tracking-wide">c = f(e,h)</span>
+            </div>
+          </div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Esta fórmula representa la precisión científica detrás de mis
+            intervenciones. No necesitas conocerla, solo saber que gracias a
+            ella logramos cambios reales y duraderos.
+          </p>
+        </div>
+
         {/* CTA Section */}
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-6">

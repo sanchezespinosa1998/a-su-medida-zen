@@ -18,13 +18,13 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <header className="fixed top-8 left-0 right-0 z-50 w-full pointer-events-none">
+      <nav className="flex justify-center px-4 sm:px-6 lg:px-8 pointer-events-auto">
+        <div className="flex h-16 items-center justify-between bg-background/95 border border-border rounded-2xl shadow-soft px-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2 pr-6">
             <span className="font-display text-xl font-bold text-primary">
-              A su medida
+              A SU MEDIDA
             </span>
           </Link>
 
@@ -34,11 +34,10 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                  isActive(link.path)
-                    ? "text-primary bg-accent"
-                    : "text-foreground hover:text-primary hover:bg-accent/50"
-                }`}
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${isActive(link.path)
+                  ? "text-primary bg-accent"
+                  : "text-foreground hover:text-primary hover:bg-accent/50"
+                  }`}
               >
                 {link.name}
               </Link>
@@ -73,11 +72,10 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                    isActive(link.path)
-                      ? "text-primary bg-accent"
-                      : "text-foreground hover:text-primary hover:bg-accent/50"
-                  }`}
+                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${isActive(link.path)
+                    ? "text-primary bg-accent"
+                    : "text-foreground hover:text-primary hover:bg-accent/50"
+                    }`}
                 >
                   {link.name}
                 </Link>

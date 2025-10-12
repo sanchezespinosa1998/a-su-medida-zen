@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -19,12 +25,12 @@ All colors MUST be HSL.
     --popover-foreground: 220 20% 20%;
 
     /* Azul oscuro profesional - color principal */
-    --primary: 220 60% 25%;
+    --primary: 220 70% 15%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 220 60% 35%;
+    --primary-hover: 220 70% 25%;
 
-    /* Crema cálido para secciones alternadas */
-    --secondary: 40 40% 96%;
+    /* Amarillo anaranjado para secciones alternadas */
+    --secondary: 35 85% 70%;
     --secondary-foreground: 220 20% 20%;
 
     --muted: 220 15% 95%;
@@ -44,9 +50,9 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Gradientes y efectos */
-    --gradient-hero: linear-gradient(135deg, hsl(220 60% 25%) 0%, hsl(220 60% 35%) 100%);
-    --shadow-soft: 0 4px 24px -8px hsl(220 60% 25% / 0.15);
-    --shadow-card: 0 2px 12px -4px hsl(220 60% 25% / 0.12);
+    --gradient-hero: linear-gradient(135deg, hsl(220 70% 15%) 0%, hsl(220 70% 25%) 100%);
+    --shadow-soft: 0 4px 24px -8px hsl(220 70% 15% / 0.15);
+    --shadow-card: 0 2px 12px -4px hsl(220 70% 15% / 0.12);
   }
 }
 
@@ -59,8 +65,14 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-sans antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -76,4 +88,394 @@ All colors MUST be HSL.
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
+}
+
+/* Animaciones de orbes flotantes */
+@keyframes float-1 {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-120px) scale(1.2);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-280px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes float-2 {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-150px) scale(1.4);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateY(-320px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes float-3 {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-130px) scale(1.1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-300px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes float-4 {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(-160px) scale(1.3);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-340px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes float-5 {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translateY(-170px) scale(1.5);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateY(-360px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+@keyframes float-6 {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(-110px) scale(1.2);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-260px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes float-7 {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-180px) scale(1.1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-380px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes float-8 {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(-190px) scale(1.3);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-400px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes float-9 {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-140px) scale(1.2);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateY(-320px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes float-10 {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-200px) scale(1.4);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-420px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+.animate-float-1 {
+  animation: float-1 6s infinite ease-out;
+}
+
+.animate-float-2 {
+  animation: float-2 7s infinite ease-out 0.5s;
+}
+
+.animate-float-3 {
+  animation: float-3 5s infinite ease-out 1s;
+}
+
+.animate-float-4 {
+  animation: float-4 6.5s infinite ease-out 1.5s;
+}
+
+.animate-float-5 {
+  animation: float-5 7.5s infinite ease-out 2s;
+}
+
+.animate-float-6 {
+  animation: float-6 5.5s infinite ease-out 2.5s;
+}
+
+.animate-float-7 {
+  animation: float-7 6.2s infinite ease-out 3s;
+}
+
+.animate-float-8 {
+  animation: float-8 7.2s infinite ease-out 3.5s;
+}
+
+.animate-float-9 {
+  animation: float-9 5.8s infinite ease-out 4s;
+}
+
+.animate-float-10 {
+  animation: float-10 7.8s infinite ease-out 4.5s;
+}
+
+.animate-float-11 {
+  animation: float-1 6.2s infinite ease-out 0.8s;
+}
+
+.animate-float-12 {
+  animation: float-2 7.3s infinite ease-out 1.2s;
+}
+
+.animate-float-13 {
+  animation: float-3 5.4s infinite ease-out 1.8s;
+}
+
+.animate-float-14 {
+  animation: float-4 6.7s infinite ease-out 2.3s;
+}
+
+.animate-float-15 {
+  animation: float-5 7.6s infinite ease-out 2.8s;
+}
+
+.animate-float-16 {
+  animation: float-6 5.7s infinite ease-out 3.3s;
+}
+
+.animate-float-17 {
+  animation: float-7 6.4s infinite ease-out 3.8s;
+}
+
+.animate-float-18 {
+  animation: float-8 7.4s infinite ease-out 4.2s;
+}
+
+.animate-float-19 {
+  animation: float-9 6.0s infinite ease-out 4.8s;
+}
+
+.animate-float-20 {
+  animation: float-10 8.0s infinite ease-out 5.2s;
+}
+
+.animate-float-21 {
+  animation: float-1 6.5s infinite ease-out 0.3s;
+}
+
+.animate-float-22 {
+  animation: float-2 7.1s infinite ease-out 0.9s;
+}
+
+.animate-float-23 {
+  animation: float-3 5.6s infinite ease-out 1.5s;
+}
+
+.animate-float-24 {
+  animation: float-4 6.8s infinite ease-out 2.1s;
+}
+
+.animate-float-25 {
+  animation: float-5 7.7s infinite ease-out 2.6s;
+}
+
+.animate-float-26 {
+  animation: float-6 5.9s infinite ease-out 3.1s;
+}
+
+.animate-float-27 {
+  animation: float-7 6.6s infinite ease-out 3.6s;
+}
+
+.animate-float-28 {
+  animation: float-8 7.5s infinite ease-out 4.1s;
+}
+
+.animate-float-29 {
+  animation: float-9 6.1s infinite ease-out 4.6s;
+}
+
+.animate-float-30 {
+  animation: float-10 8.1s infinite ease-out 5.0s;
+}
+
+/* Animación del carrusel de testimonios */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+/* Animaciones de neon resplandeciente */
+@keyframes neon-glow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1) translateX(-100%);
+  }
+
+  25% {
+    opacity: 0.8;
+    transform: scale(1.1) translateX(-50%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) translateX(0%);
+  }
+
+  75% {
+    opacity: 0.6;
+    transform: scale(1.1) translateX(50%);
+  }
+}
+
+@keyframes neon-pulse {
+
+  0%,
+  100% {
+    opacity: 0.1;
+    filter: blur(2px);
+  }
+
+  25% {
+    opacity: 0.4;
+    filter: blur(1px);
+  }
+
+  50% {
+    opacity: 0.7;
+    filter: blur(0.5px);
+  }
+
+  75% {
+    opacity: 0.3;
+    filter: blur(1.5px);
+  }
+}
+
+.animate-neon-glow {
+  animation: neon-glow 4s ease-in-out infinite;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+/* Animaciones para el indicador de scroll */
+@keyframes scroll-dot {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-scroll-dot-1 {
+  animation: scroll-dot 1.5s ease-in-out infinite;
+}
+
+.animate-scroll-dot-2 {
+  animation: scroll-dot 1.5s ease-in-out infinite 0.2s;
+}
+
+.animate-scroll-dot-3 {
+  animation: scroll-dot 1.5s ease-in-out infinite 0.4s;
 }
