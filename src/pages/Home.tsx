@@ -207,6 +207,45 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section ref={heroRef} className="relative overflow-hidden bg-primary min-h-screen flex items-center">
+        {/* Orbes flotantes de fondo */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Primera fila de orbes */}
+          <div className="absolute bottom-0 left-[5%] w-12 h-12 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full blur-md animate-float-1"></div>
+          <div className="absolute bottom-0 left-[15%] w-16 h-16 bg-gradient-to-br from-blue-300/25 to-cyan-300/25 rounded-full blur-lg animate-float-2"></div>
+          <div className="absolute bottom-0 left-[25%] w-10 h-10 bg-gradient-to-br from-cyan-500/35 to-blue-500/35 rounded-full blur-sm animate-float-3"></div>
+          <div className="absolute bottom-0 left-[35%] w-14 h-14 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-md animate-float-4"></div>
+          <div className="absolute bottom-0 left-[45%] w-18 h-18 bg-gradient-to-br from-cyan-300/20 to-blue-300/20 rounded-full blur-xl animate-float-5"></div>
+          <div className="absolute bottom-0 left-[55%] w-12 h-12 bg-gradient-to-br from-blue-500/40 to-cyan-500/40 rounded-full blur-md animate-float-6"></div>
+          <div className="absolute bottom-0 left-[65%] w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full blur-lg animate-float-7"></div>
+          <div className="absolute bottom-0 left-[75%] w-10 h-10 bg-gradient-to-br from-blue-300/25 to-cyan-300/25 rounded-full blur-sm animate-float-8"></div>
+          <div className="absolute bottom-0 left-[85%] w-14 h-14 bg-gradient-to-br from-cyan-500/35 to-blue-500/35 rounded-full blur-md animate-float-9"></div>
+          <div className="absolute bottom-0 left-[95%] w-12 h-12 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-lg animate-float-10"></div>
+
+          {/* Segunda fila de orbes */}
+          <div className="absolute bottom-0 left-[8%] w-14 h-14 bg-gradient-to-br from-blue-300/20 to-cyan-300/20 rounded-full blur-xl animate-float-11"></div>
+          <div className="absolute bottom-0 left-[18%] w-10 h-10 bg-gradient-to-br from-cyan-500/40 to-blue-500/40 rounded-full blur-sm animate-float-12"></div>
+          <div className="absolute bottom-0 left-[28%] w-16 h-16 bg-gradient-to-br from-blue-400/25 to-cyan-400/25 rounded-full blur-md animate-float-13"></div>
+          <div className="absolute bottom-0 left-[38%] w-12 h-12 bg-gradient-to-br from-cyan-300/30 to-blue-300/30 rounded-full blur-lg animate-float-14"></div>
+          <div className="absolute bottom-0 left-[48%] w-14 h-14 bg-gradient-to-br from-blue-500/35 to-cyan-500/35 rounded-full blur-md animate-float-15"></div>
+          <div className="absolute bottom-0 left-[58%] w-10 h-10 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full blur-sm animate-float-16"></div>
+          <div className="absolute bottom-0 left-[68%] w-16 h-16 bg-gradient-to-br from-blue-300/25 to-cyan-300/25 rounded-full blur-xl animate-float-17"></div>
+          <div className="absolute bottom-0 left-[78%] w-12 h-12 bg-gradient-to-br from-cyan-500/40 to-blue-500/40 rounded-full blur-md animate-float-18"></div>
+          <div className="absolute bottom-0 left-[88%] w-14 h-14 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-lg animate-float-19"></div>
+          <div className="absolute bottom-0 left-[98%] w-10 h-10 bg-gradient-to-br from-cyan-300/25 to-blue-300/25 rounded-full blur-sm animate-float-20"></div>
+
+          {/* Tercera fila de orbes */}
+          <div className="absolute bottom-0 left-[3%] w-16 h-16 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 rounded-full blur-lg animate-float-21"></div>
+          <div className="absolute bottom-0 left-[13%] w-12 h-12 bg-gradient-to-br from-cyan-400/35 to-blue-400/35 rounded-full blur-md animate-float-22"></div>
+          <div className="absolute bottom-0 left-[23%] w-14 h-14 bg-gradient-to-br from-blue-300/25 to-cyan-300/25 rounded-full blur-sm animate-float-23"></div>
+          <div className="absolute bottom-0 left-[33%] w-10 h-10 bg-gradient-to-br from-cyan-500/40 to-blue-500/40 rounded-full blur-xl animate-float-24"></div>
+          <div className="absolute bottom-0 left-[43%] w-16 h-16 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-md animate-float-25"></div>
+          <div className="absolute bottom-0 left-[53%] w-12 h-12 bg-gradient-to-br from-cyan-300/25 to-blue-300/25 rounded-full blur-lg animate-float-26"></div>
+          <div className="absolute bottom-0 left-[63%] w-14 h-14 bg-gradient-to-br from-blue-500/35 to-cyan-500/35 rounded-full blur-sm animate-float-27"></div>
+          <div className="absolute bottom-0 left-[73%] w-10 h-10 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full blur-xl animate-float-28"></div>
+          <div className="absolute bottom-0 left-[83%] w-16 h-16 bg-gradient-to-br from-blue-300/25 to-cyan-300/25 rounded-full blur-md animate-float-29"></div>
+          <div className="absolute bottom-0 left-[93%] w-12 h-12 bg-gradient-to-br from-cyan-500/40 to-blue-500/40 rounded-full blur-lg animate-float-30"></div>
+        </div>
+
         {/* Láser resplandeciente animado por scroll */}
         <div
           className="absolute left-1/2 transform -translate-x-1/2 z-0 pointer-events-none transition-opacity duration-300"
@@ -515,8 +554,47 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="bg-primary text-white py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-primary text-white py-16 md:py-24 relative overflow-hidden">
+        {/* Orbes flotantes blancos de fondo */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Primera fila de orbes */}
+          <div className="absolute bottom-0 left-[5%] w-12 h-12 bg-gradient-to-br from-white/20 to-white/15 rounded-full blur-md animate-float-1"></div>
+          <div className="absolute bottom-0 left-[15%] w-16 h-16 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-lg animate-float-2"></div>
+          <div className="absolute bottom-0 left-[25%] w-10 h-10 bg-gradient-to-br from-white/25 to-white/20 rounded-full blur-sm animate-float-3"></div>
+          <div className="absolute bottom-0 left-[35%] w-14 h-14 bg-gradient-to-br from-white/18 to-white/12 rounded-full blur-md animate-float-4"></div>
+          <div className="absolute bottom-0 left-[45%] w-18 h-18 bg-gradient-to-br from-white/12 to-white/8 rounded-full blur-xl animate-float-5"></div>
+          <div className="absolute bottom-0 left-[55%] w-12 h-12 bg-gradient-to-br from-white/22 to-white/16 rounded-full blur-md animate-float-6"></div>
+          <div className="absolute bottom-0 left-[65%] w-16 h-16 bg-gradient-to-br from-white/20 to-white/15 rounded-full blur-lg animate-float-7"></div>
+          <div className="absolute bottom-0 left-[75%] w-10 h-10 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-sm animate-float-8"></div>
+          <div className="absolute bottom-0 left-[85%] w-14 h-14 bg-gradient-to-br from-white/25 to-white/18 rounded-full blur-md animate-float-9"></div>
+          <div className="absolute bottom-0 left-[95%] w-12 h-12 bg-gradient-to-br from-white/18 to-white/12 rounded-full blur-lg animate-float-10"></div>
+
+          {/* Segunda fila de orbes */}
+          <div className="absolute bottom-0 left-[8%] w-14 h-14 bg-gradient-to-br from-white/12 to-white/8 rounded-full blur-xl animate-float-11"></div>
+          <div className="absolute bottom-0 left-[18%] w-10 h-10 bg-gradient-to-br from-white/22 to-white/16 rounded-full blur-sm animate-float-12"></div>
+          <div className="absolute bottom-0 left-[28%] w-16 h-16 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-md animate-float-13"></div>
+          <div className="absolute bottom-0 left-[38%] w-12 h-12 bg-gradient-to-br from-white/18 to-white/12 rounded-full blur-lg animate-float-14"></div>
+          <div className="absolute bottom-0 left-[48%] w-14 h-14 bg-gradient-to-br from-white/25 to-white/18 rounded-full blur-md animate-float-15"></div>
+          <div className="absolute bottom-0 left-[58%] w-10 h-10 bg-gradient-to-br from-white/20 to-white/15 rounded-full blur-sm animate-float-16"></div>
+          <div className="absolute bottom-0 left-[68%] w-16 h-16 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-xl animate-float-17"></div>
+          <div className="absolute bottom-0 left-[78%] w-12 h-12 bg-gradient-to-br from-white/22 to-white/16 rounded-full blur-md animate-float-18"></div>
+          <div className="absolute bottom-0 left-[88%] w-14 h-14 bg-gradient-to-br from-white/18 to-white/12 rounded-full blur-lg animate-float-19"></div>
+          <div className="absolute bottom-0 left-[98%] w-10 h-10 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-sm animate-float-20"></div>
+
+          {/* Tercera fila de orbes */}
+          <div className="absolute bottom-0 left-[3%] w-16 h-16 bg-gradient-to-br from-white/18 to-white/12 rounded-full blur-lg animate-float-21"></div>
+          <div className="absolute bottom-0 left-[13%] w-12 h-12 bg-gradient-to-br from-white/25 to-white/18 rounded-full blur-md animate-float-22"></div>
+          <div className="absolute bottom-0 left-[23%] w-14 h-14 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-sm animate-float-23"></div>
+          <div className="absolute bottom-0 left-[33%] w-10 h-10 bg-gradient-to-br from-white/22 to-white/16 rounded-full blur-xl animate-float-24"></div>
+          <div className="absolute bottom-0 left-[43%] w-16 h-16 bg-gradient-to-br from-white/18 to-white/12 rounded-full blur-md animate-float-25"></div>
+          <div className="absolute bottom-0 left-[53%] w-12 h-12 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-lg animate-float-26"></div>
+          <div className="absolute bottom-0 left-[63%] w-14 h-14 bg-gradient-to-br from-white/25 to-white/18 rounded-full blur-sm animate-float-27"></div>
+          <div className="absolute bottom-0 left-[73%] w-10 h-10 bg-gradient-to-br from-white/20 to-white/15 rounded-full blur-xl animate-float-28"></div>
+          <div className="absolute bottom-0 left-[83%] w-16 h-16 bg-gradient-to-br from-white/15 to-white/10 rounded-full blur-md animate-float-29"></div>
+          <div className="absolute bottom-0 left-[93%] w-12 h-12 bg-gradient-to-br from-white/22 to-white/16 rounded-full blur-lg animate-float-30"></div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             ¿Listo para transformar la vida de tu hijo?
           </h2>
