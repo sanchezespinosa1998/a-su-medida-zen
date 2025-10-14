@@ -74,10 +74,10 @@ const Dudas = () => {
                 value={`item-${index}`}
                 className="border border-border rounded-lg px-6 shadow-card"
               >
-                <AccordionTrigger className="text-left font-semibold hover:text-primary">
+                <AccordionTrigger className="text-left text-lg font-semibold hover:text-primary">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pt-2">
+                <AccordionContent className="text-muted-foreground text-base pt-2 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
