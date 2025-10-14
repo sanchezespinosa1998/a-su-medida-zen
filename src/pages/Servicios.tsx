@@ -49,7 +49,7 @@ const Servicios = () => {
   ];
 
   return (
-    <div className="min-h-screen py-16 md:py-24">
+    <div className="min-h-screen py-16 md:py-24 pt-24 md:pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -68,11 +68,10 @@ const Servicios = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className={`shadow-card hover:shadow-soft transition-all ${
-                service.highlighted
+              className={`shadow-card hover:shadow-soft transition-all ${service.highlighted
                   ? "border-2 border-primary relative"
                   : ""
-              }`}
+                }`}
             >
               {service.highlighted && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">

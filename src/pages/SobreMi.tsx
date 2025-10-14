@@ -28,7 +28,7 @@ const SobreMi = () => {
   ];
 
   return (
-    <div className="min-h-screen py-16 md:py-24">
+    <div className="min-h-screen py-16 md:py-24 pt-24 md:pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-20">

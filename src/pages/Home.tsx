@@ -12,6 +12,8 @@ import {
   Star,
 } from "lucide-react";
 import formulaImage from "@/assets/formula-cientifica.jpg";
+import miguelPhoto from "@/assets/miguel-olea.jpg";
+import recurso4 from "@/assets/Recurso 4.jpeg";
 import recurso14 from "@/assets/Recurso 14.svg";
 import { useState, useEffect, useRef } from "react";
 
@@ -65,7 +67,7 @@ const TypewriterCycle = () => {
   }, [currentIndex, isDeleting, currentWordIndex, words]);
 
   return (
-    <span className="text-white/90">
+    <span className="text-white/100">
       {prefix}
       {displayText}
       <span className="animate-pulse">|</span>
@@ -351,7 +353,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* CTA encima de la forma redondeada - Círculo con cerebro */}
+        {/* CTA encima de la forma redondeada - Círculo principal */}
         <Link to="/servicios" className="absolute bottom-[38px] left-1/2 transform -translate-x-1/2 z-30 group">
           {/* Resplandor de neon alrededor del círculo */}
           <div
@@ -381,9 +383,11 @@ const Home = () => {
 
           {/* Círculo blanco con icono */}
           <div
-            className={`relative w-[144px] h-[144px] bg-white rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1 active:scale-95 active:translate-y-0 ${laserProgress > 0.8
-              ? 'shadow-xl scale-105'
-              : 'shadow-lg'
+            className={`relative w-[144px] h-[144px] bg-white rounded-full flex items-center justify-center transition-all duration-500 active:scale-95 active:translate-y-0 ${laserProgress > 0.8
+              ? 'shadow-xl scale-110 -translate-y-1'
+              : laserProgress > 0.15
+                ? 'shadow-lg scale-105 -translate-y-1'
+                : 'shadow-lg'
               }`}
           >
             <img src={recurso14} alt="Icono" className="w-[95px] h-[95px]" />
@@ -397,6 +401,10 @@ const Home = () => {
 
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Imagen pequeña superior */}
+          <div className="w-full flex justify-center py-6">
+            <img src={recurso4} alt="Familia acompañamiento" className="w-[500px] h-auto object-contain rounded-2xl shadow-card" />
+          </div>
           {/* Badge similar al del hero */}
           <div className="flex justify-center mb-6">
             <div className="inline-flex items-center gap-2.5 px-4 py-0.5 bg-white/50 backdrop-blur-sm border border-primary rounded-full">
@@ -441,6 +449,47 @@ const Home = () => {
             ))}
           </div>
           <div ref={benefitsEndRef}></div>
+        </div>
+      </section>
+
+      {/* Sobre mí - Miguel */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+            <div className="order-2 md:order-1">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Sobre mí</h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                Soy Miguel Olea, psicólogo infanto-juvenil. Acompaño a familias para que sus
+                hijos desarrollen habilidades emocionales y conductuales sólidas, con un enfoque
+                práctico, cercano y basado en evidencia.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                  <span className="text-foreground">Experiencia acompañando a niños con TDAH, ansiedad y depresión.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                  <span className="text-foreground">Intervenciones personalizadas y medibles para cada familia.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                  <span className="text-foreground">Comunicación clara, herramientas prácticas y seguimiento cercano.</span>
+                </li>
+              </ul>
+              <div className="mt-8">
+                <Button size="lg" asChild>
+                  <Link to="/sobre-mi">Conoce más</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="relative aspect-[4/5] max-w-md mx-auto">
+                <img src={miguelPhoto} alt="Miguel Olea" className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-card" />
+                <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/0 blur-2xl -z-10"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
