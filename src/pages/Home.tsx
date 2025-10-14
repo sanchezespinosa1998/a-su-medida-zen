@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   MessageSquare,
   Heart,
   Users,
@@ -419,34 +425,48 @@ const Home = () => {
           <h2 className="text-3xl md:text-6xl font-bold text-center mb-10">
             ¿Qué puedes conseguir?
           </h2>
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-            {benefits.slice(0, 4).map((benefit, index) => (
-              <Card key={index} className="shadow-card hover:shadow-soft transition-all duration-300 hover:scale-[1.02]">
-                <CardContent className="p-8">
-                  <div className="flex items-start space-x-6">
-                    <div className="bg-primary/10 p-4 rounded-xl flex-shrink-0">
-                      <benefit.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                      <h3 className="text-2xl font-bold text-foreground">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed">
-                        {benefit.description}
-                      </p>
-                      <div className="grid gap-3 mt-6">
-                        {benefit.details.map((detail, detailIndex) => (
-                          <div key={detailIndex} className="flex items-center space-x-3">
-                            <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                            <span className="text-sm text-foreground">{detail}</span>
+          <div className="max-w-6xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-6">
+              {benefits.slice(0, 4).map((benefit, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="border-none"
+                >
+                  <Card className="shadow-card hover:shadow-soft transition-all duration-300">
+                    <CardContent className="p-0">
+                      <AccordionTrigger className="p-8 hover:no-underline">
+                        <div className="flex items-start space-x-6 w-full text-left">
+                          <div className="bg-primary/10 p-4 rounded-xl flex-shrink-0">
+                            <benefit.icon className="w-8 h-8 text-primary" />
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                          <div className="flex-1 space-y-4">
+                            <h3 className="text-2xl font-bold text-foreground">
+                              {benefit.title}
+                            </h3>
+                            <div className="grid gap-3">
+                              {benefit.details.map((detail, detailIndex) => (
+                                <div key={detailIndex} className="flex items-center space-x-3">
+                                  <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                  <span className="font-sans text-lg leading-relaxed text-foreground">{detail}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-8 pb-8">
+                        <div className="ml-[88px]">
+                          <p className="text-muted-foreground text-lg leading-relaxed">
+                            {benefit.description}
+                          </p>
+                        </div>
+                      </AccordionContent>
+                    </CardContent>
+                  </Card>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
           <div ref={benefitsEndRef}></div>
         </div>
