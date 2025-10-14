@@ -12,11 +12,19 @@ import {
   Star,
 } from "lucide-react";
 import formulaImage from "@/assets/formula-cientifica.jpg";
+import recurso14 from "@/assets/Recurso 14.svg";
 import { useState, useEffect, useRef } from "react";
 
 // Componente para efecto typewriter en bucle
 const TypewriterCycle = () => {
-  const words = ["ciencia", "claridad", "resultados"];
+  // Prefijo fijo y frases variables (solo el complemento)
+  const prefix = "De psicólogo ";
+  const words = [
+    "EX-TDAH para niños con TDAH.",
+    "especializado para niños con ansiedad.",
+    "empático para niños con depresión.",
+    "conductual para niños con problemas de conducta."
+  ];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -31,13 +39,13 @@ const TypewriterCycle = () => {
         const timeout = setTimeout(() => {
           setDisplayText(currentWord.substring(0, currentIndex + 1));
           setCurrentIndex(prev => prev + 1);
-        }, 100);
+        }, 60);
         return () => clearTimeout(timeout);
       } else {
         // Terminó de escribir, espera un poco antes de empezar a borrar
         const timeout = setTimeout(() => {
           setIsDeleting(true);
-        }, 2000);
+        }, 1200);
         return () => clearTimeout(timeout);
       }
     } else {
@@ -46,7 +54,7 @@ const TypewriterCycle = () => {
         const timeout = setTimeout(() => {
           setDisplayText(currentWord.substring(0, currentIndex - 1));
           setCurrentIndex(prev => prev - 1);
-        }, 50);
+        }, 35);
         return () => clearTimeout(timeout);
       } else {
         // Terminó de borrar, pasa a la siguiente palabra
@@ -57,7 +65,8 @@ const TypewriterCycle = () => {
   }, [currentIndex, isDeleting, currentWordIndex, words]);
 
   return (
-    <span className="text-secondary">
+    <span className="text-white/90">
+      {prefix}
       {displayText}
       <span className="animate-pulse">|</span>
     </span>
@@ -293,7 +302,7 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-slate-900 via-slate-800/70 to-transparent z-5"></div>
 
         {/* Media elipse en la base con resplandor */}
-        <div className="absolute bottom-10 left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-10">
+        <div className="absolute bottom-[-10px] left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-10">
           {/* Resplandor de neon alrededor de la forma */}
           <div className="absolute -inset-6 bg-gradient-to-r from-cyan-400/40 via-blue-400/60 to-cyan-400/40 rounded-t-full blur-xl animate-pulse"></div>
 
@@ -302,7 +311,7 @@ const Home = () => {
         </div>
 
         {/* Efecto de neon resplandeciente en el borde */}
-        <div className="absolute bottom-10 left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-20 rounded-t-full overflow-hidden pointer-events-none">
+        <div className="absolute bottom-[-10px] left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-20 rounded-t-full overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-white/15 to-transparent blur-sm animate-pulse"></div>
           <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent blur-md animate-neon-glow"></div>
           <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-blue-400/15 to-transparent blur-sm animate-neon-pulse"></div>
@@ -330,19 +339,20 @@ const Home = () => {
               </div>
             </div>
 
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white max-w-4xl mx-auto">
-              Transforma la conducta de tu hijo con{" "}
-              <TypewriterCycle />
+            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-tight text-white max-w-5xl mx-auto">
+              Soluciones personalizadas
+              <br className="hidden xs:block" />
+              {" "}basadas en <span className="text-secondary">evidencia científica</span>
+              <br className="hidden xs:block" />
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-              La experiencia de quien ha estado en su lugar. Soluciones
-              personalizadas basadas en evidencia científica.
+              <TypewriterCycle />
             </p>
           </div>
         </div>
 
         {/* CTA encima de la forma redondeada - Círculo con cerebro */}
-        <Link to="/servicios" className="absolute bottom-[88px] left-1/2 transform -translate-x-1/2 z-30 group">
+        <Link to="/servicios" className="absolute bottom-[38px] left-1/2 transform -translate-x-1/2 z-30 group">
           {/* Resplandor de neon alrededor del círculo */}
           <div
             className={`absolute rounded-full blur-md transition-all duration-500 ${laserProgress > 0.8
@@ -369,27 +379,16 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Círculo blanco con cerebro */}
+          {/* Círculo blanco con icono */}
           <div
             className={`relative w-[144px] h-[144px] bg-white rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1 active:scale-95 active:translate-y-0 ${laserProgress > 0.8
               ? 'shadow-xl scale-105'
               : 'shadow-lg'
               }`}
           >
-            <svg className="w-[80px] h-[80px] text-primary" fill="currentColor" viewBox="0 0 512 512">
-              <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z" />
-            </svg>
+            <img src={recurso14} alt="Icono" className="w-[95px] h-[95px]" />
           </div>
         </Link>
-
-        {/* Indicador de scroll hacia abajo */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center justify-center gap-1.5 animate-bounce">
-          <div className="flex flex-col items-center justify-center gap-1.5">
-            <div className="w-1.5 h-1.5 bg-gray-800/70 rounded-full animate-scroll-dot-1"></div>
-            <div className="w-1.5 h-1.5 bg-gray-800/70 rounded-full animate-scroll-dot-2"></div>
-            <div className="w-1.5 h-1.5 bg-gray-800/70 rounded-full animate-scroll-dot-3"></div>
-          </div>
-        </div>
 
       </section>
 
