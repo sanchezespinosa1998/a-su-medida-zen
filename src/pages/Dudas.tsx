@@ -55,7 +55,7 @@ const Dudas = () => {
     <div className="min-h-screen py-16 md:py-24 pt-36 md:pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-6xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Resuelve tus dudas antes de empezar
           </h1>
@@ -66,7 +66,7 @@ const Dudas = () => {
         </div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto mb-16">
+        <div className="max-w-6xl mx-auto mb-16">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
@@ -86,16 +86,16 @@ const Dudas = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-secondary p-8 md:p-12 rounded-2xl text-center max-w-3xl mx-auto">
-          <MessageCircle className="w-12 h-12 text-primary mx-auto mb-4" />
+        <div className="bg-primary text-white p-8 md:p-12 rounded-2xl text-center max-w-6xl mx-auto">
+          <MessageCircle className="w-12 h-12 text-white mx-auto mb-4" />
           <h3 className="text-2xl font-bold mb-4">
             ¿Tu duda no está aquí?
           </h3>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-lg opacity-90 mb-6">
             Escríbeme directamente por WhatsApp y te responderé lo antes
             posible. Estoy aquí para ayudarte.
           </p>
-          <Button size="lg" asChild>
+          <Button size="lg" asChild variant="secondary">
             <a
               href="https://wa.me/34693054790?text=Hola,%20tengo%20una%20duda%20sobre%20los%20servicios"
               target="_blank"

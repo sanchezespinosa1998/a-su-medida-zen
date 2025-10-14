@@ -61,10 +61,10 @@ const SobreMi = () => {
         </div>
 
         {/* My Story Section */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <div className="bg-secondary p-8 md:p-12 rounded-2xl">
+        <div className="max-w-6xl mx-auto mb-20">
+          <div className="bg-primary text-white p-8 md:p-12 rounded-2xl">
             <h2 className="text-3xl font-bold mb-6">Mi historia</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-4 opacity-90 leading-relaxed">
               <p>
                 De niño, fui diagnosticado con TDAH. Sé lo que es sentirse
                 diferente, luchar con la atención y enfrentar las
@@ -82,7 +82,7 @@ const SobreMi = () => {
                 profundamente las emociones y desafíos que viven las familias
                 cada día.
               </p>
-              <p className="font-semibold text-foreground">
+              <p className="font-semibold">
                 Mi misión es simple: transformar la vida de los niños y sus
                 familias mediante intervenciones basadas en evidencia, con
                 empatía y resultados medibles.
@@ -114,7 +114,7 @@ const SobreMi = () => {
         </div>
 
         {/* Credentials Section */}
-        <div className="max-w-4xl mx-auto mb-20">
+        <div className="max-w-6xl mx-auto mb-20">
           <Card className="shadow-card">
             <CardContent className="p-8 md:p-12">
               <h2 className="text-2xl font-bold mb-6">Acreditaciones oficiales</h2>
@@ -153,7 +153,7 @@ const SobreMi = () => {
         </div>
 
         {/* Approach Section */}
-        <div className="bg-primary text-white p-8 md:p-12 rounded-2xl text-center max-w-4xl mx-auto mb-20">
+        <div className="bg-primary text-white p-8 md:p-12 rounded-2xl text-center max-w-6xl mx-auto mb-20">
           <h2 className="text-3xl font-bold mb-6">Mi enfoque</h2>
           <p className="text-lg opacity-90 leading-relaxed">
             Trabajo desde el rigor científico pero con un trato humano y cercano.
@@ -164,7 +164,7 @@ const SobreMi = () => {
         </div>
 
         {/* Scientific Formula Section */}
-        <div className="max-w-4xl mx-auto text-center space-y-8 mb-20">
+        <div className="max-w-6xl mx-auto text-center space-y-8 mb-20">
           <h2 className="text-3xl md:text-4xl font-bold">
             Ciencia detrás de cada intervención
           </h2>
@@ -173,7 +173,7 @@ const SobreMi = () => {
               <span className="text-8xl font-sans font-light text-primary tracking-wide">c = f(e,h)</span>
             </div>
           </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
             Esta fórmula representa la precisión científica detrás de mis
             intervenciones. No necesitas conocerla, solo saber que gracias a
             ella logramos cambios reales y duraderos.
@@ -181,23 +181,25 @@ const SobreMi = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            ¿Hablamos de cómo puedo ayudarte?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Reserva una cita conmigo y descubre cómo podemos trabajar juntos
-            para transformar la vida de tu hijo.
-          </p>
-          <Button size="lg" asChild className="text-lg px-8">
-            <a
-              href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20cita"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Reserva una cita
-            </a>
-          </Button>
+        <div className="text-center max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6">
+              ¿Hablamos de cómo puedo ayudarte?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Reserva una cita conmigo y descubre cómo podemos trabajar juntos
+              para transformar la vida de tu hijo.
+            </p>
+            <Button size="lg" asChild className="text-lg px-8">
+              <a
+                href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20cita"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Reserva una cita
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

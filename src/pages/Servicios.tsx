@@ -58,7 +58,7 @@ const Servicios = () => {
     <div className="min-h-screen py-16 md:py-24 pt-36 md:pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-6xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Servicios de psicología infantil
           </h1>
@@ -70,73 +70,75 @@ const Servicios = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className={`shadow-card hover:shadow-soft transition-all overflow-hidden ${service.highlighted
-                ? "border-2 border-primary relative"
-                : ""
-                }`}
-            >
-              {service.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold z-10">
-                  Más popular
-                </div>
-              )}
-              <div className="relative w-full h-48 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-2xl">{service.title}</CardTitle>
-                <div className="flex items-center justify-between pt-4">
-                  <div className="flex items-center text-muted-foreground">
-                    <Clock className="w-4 h-4 mr-2" />
-                    <span className="text-sm">{service.duration}</span>
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Card
+                key={index}
+                className={`shadow-card hover:shadow-soft transition-all overflow-hidden ${service.highlighted
+                  ? "border-2 border-primary relative"
+                  : ""
+                  }`}
+              >
+                {service.highlighted && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold z-10">
+                    Más popular
                   </div>
-                  <div className="flex items-baseline">
-                    <span className="text-3xl font-bold text-primary">
-                      {service.price}
-                    </span>
-                  </div>
+                )}
+                <div className="relative w-full h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="text-muted-foreground">{service.description}</p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start">
-                      <Check className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="w-full" asChild>
-                  <a
-                    href={`https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20cita%20de%20${encodeURIComponent(
-                      service.title
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Reservar cita
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+                <CardHeader>
+                  <CardTitle className="text-2xl">{service.title}</CardTitle>
+                  <div className="flex items-center justify-between pt-4">
+                    <div className="flex items-center text-muted-foreground">
+                      <Clock className="w-4 h-4 mr-2" />
+                      <span className="text-sm">{service.duration}</span>
+                    </div>
+                    <div className="flex items-baseline">
+                      <span className="text-3xl font-bold text-primary">
+                        {service.price}
+                      </span>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-muted-foreground">{service.description}</p>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, fIndex) => (
+                      <li key={fIndex} className="flex items-start">
+                        <Check className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className="w-full" asChild>
+                    <a
+                      href={`https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20cita%20de%20${encodeURIComponent(
+                        service.title
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Reservar cita
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* Method Reminder */}
-        <div className="bg-secondary p-8 md:p-12 rounded-2xl text-center max-w-4xl mx-auto">
+        <div className="bg-primary text-white p-8 md:p-12 rounded-2xl text-center max-w-6xl mx-auto">
           <h3 className="text-2xl font-bold mb-4">
             Cada sesión es única y personalizada
           </h3>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-lg opacity-90">
             Todos mis servicios están basados en evidencia científica y en la
             comprensión real de tu hijo. No hay soluciones genéricas, solo
             estrategias adaptadas a tu familia.
