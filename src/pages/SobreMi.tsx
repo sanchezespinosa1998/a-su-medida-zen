@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Award, BookOpen, Users } from "lucide-react";
-import miguelImage from "@/assets/miguel-olea.jpg";
+import miguelImage from "@/assets/miguel.jpg";
 
 const SobreMi = () => {
   const qualifications = [
@@ -28,7 +28,7 @@ const SobreMi = () => {
   ];
 
   return (
-    <div className="min-h-screen py-16 md:py-24 pt-24 md:pt-32">
+    <div className="min-h-screen py-16 md:py-24 pt-36 md:pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-20">
@@ -36,7 +36,7 @@ const SobreMi = () => {
             <img
               src={miguelImage}
               alt="Miguel Olea - Psicólogo Infantil Colegiado"
-              className="rounded-2xl shadow-soft w-full h-auto"
+              className="rounded-2xl shadow-soft w-full h-auto max-h-[600px] object-cover"
             />
           </div>
           <div className="space-y-6 order-1 md:order-2">
@@ -153,7 +153,7 @@ const SobreMi = () => {
         </div>
 
         {/* Approach Section */}
-        <div className="bg-gradient-hero text-white p-8 md:p-12 rounded-2xl text-center max-w-4xl mx-auto mb-20">
+        <div className="bg-primary text-white p-8 md:p-12 rounded-2xl text-center max-w-4xl mx-auto mb-20">
           <h2 className="text-3xl font-bold mb-6">Mi enfoque</h2>
           <p className="text-lg opacity-90 leading-relaxed">
             Trabajo desde el rigor científico pero con un trato humano y cercano.

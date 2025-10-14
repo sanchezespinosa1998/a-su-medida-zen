@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Clock, Euro } from "lucide-react";
+import valoracionImage from "@/assets/valoracion.jpg";
+import asesoriaImage from "@/assets/asesoria-online.jpg";
+import tdahImage from "@/assets/tdah.jpg";
 
 const Servicios = () => {
   const services = [
@@ -16,6 +19,7 @@ const Servicios = () => {
         "Orientación sobre qué esperar",
         "Recomendaciones personalizadas",
       ],
+      image: valoracionImage,
     },
     {
       title: "Asistencia psicológica",
@@ -31,6 +35,7 @@ const Servicios = () => {
         "Cambios medibles y duraderos",
       ],
       highlighted: true,
+      image: asesoriaImage,
     },
     {
       title: "Consultoría",
@@ -45,11 +50,12 @@ const Servicios = () => {
         "Estrategias específicas para tu caso",
         "Seguimientos opcionales disponibles",
       ],
+      image: tdahImage,
     },
   ];
 
   return (
-    <div className="min-h-screen py-16 md:py-24 pt-24 md:pt-32">
+    <div className="min-h-screen py-16 md:py-24 pt-36 md:pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -68,16 +74,23 @@ const Servicios = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className={`shadow-card hover:shadow-soft transition-all ${service.highlighted
-                  ? "border-2 border-primary relative"
-                  : ""
+              className={`shadow-card hover:shadow-soft transition-all overflow-hidden ${service.highlighted
+                ? "border-2 border-primary relative"
+                : ""
                 }`}
             >
               {service.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold z-10">
                   Más popular
                 </div>
               )}
+              <div className="relative w-full h-48 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <CardHeader>
                 <CardTitle className="text-2xl">{service.title}</CardTitle>
                 <div className="flex items-center justify-between pt-4">

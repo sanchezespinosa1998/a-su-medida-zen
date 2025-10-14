@@ -12,7 +12,7 @@ import {
   Star,
 } from "lucide-react";
 import formulaImage from "@/assets/formula-cientifica.jpg";
-import miguelPhoto from "@/assets/miguel-olea.jpg";
+import miguelPhoto from "@/assets/miguel.jpg";
 import recurso4 from "@/assets/Recurso 4.jpeg";
 import recurso14 from "@/assets/Recurso 14.svg";
 import { useState, useEffect, useRef } from "react";
@@ -547,7 +547,7 @@ const Home = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button size="lg" asChild variant="outline" className="bg-white text-primary hover:bg-gray-50 border-primary px-12 py-7 text-xl transition-transform duration-300 hover:scale-110">
+            <Button size="lg" asChild variant="outline" className="bg-white text-primary hover:bg-gray-50 border-primary px-6 py-4 text-base md:px-12 md:py-7 md:text-xl transition-transform duration-300 hover:scale-110">
               <Link to="/servicios">
                 Consigue lo que quieres para tu hijo hoy
               </Link>
