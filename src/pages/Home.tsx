@@ -245,7 +245,7 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative overflow-hidden bg-primary min-h-screen flex items-center justify-center">
+      <section ref={heroRef} className="relative overflow-hidden bg-primary min-h-screen flex items-start md:items-center justify-center pt-16 md:pt-0">
         {/* Orbes flotantes de fondo */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           {/* Primera fila de orbes */}
