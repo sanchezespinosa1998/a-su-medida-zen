@@ -324,7 +324,7 @@ const Home = () => {
 
 
         {/* Contenido central */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 md:pt-0 md:pb-24 w-full relative z-10 -translate-y-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16 md:pt-0 md:pb-24 w-full relative z-10 -translate-y-5">
           <div className="text-center">
             {/* Badge con la fórmula */}
             <div className="flex justify-center mb-6">
