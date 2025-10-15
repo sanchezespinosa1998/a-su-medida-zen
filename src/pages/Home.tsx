@@ -109,13 +109,23 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Mostrar popup después de 5 segundos
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 5000);
+    // Verificar si el popup ya se mostró antes
+    const hasShownPopup = localStorage.getItem('popup-shown');
 
-    return () => clearTimeout(timer);
+    if (!hasShownPopup) {
+      // Mostrar popup después de 5 segundos solo si no se ha mostrado antes
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    localStorage.setItem('popup-shown', 'true');
+  };
 
   const benefits = [
     {
@@ -235,7 +245,7 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative overflow-hidden bg-primary min-h-screen flex items-center">
+      <section ref={heroRef} className="relative overflow-hidden bg-primary min-h-screen flex items-center justify-center">
         {/* Orbes flotantes de fondo */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           {/* Primera fila de orbes */}
@@ -336,7 +346,7 @@ const Home = () => {
 
 
         {/* Contenido central */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16 md:pt-0 md:pb-24 w-full relative z-10 -translate-y-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 md:pt-0 md:pb-12 w-full relative z-10 md:-translate-y-0">
           <div className="text-center">
             {/* Badge con la fórmula */}
             <div className="flex justify-center mb-6">
@@ -355,8 +365,8 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="space-y-2 md:space-y-8">
-              <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-tight text-white max-w-5xl mx-auto" style={{ fontSize: 'clamp(3rem, calc(2.5vw + 2.5vh + 1rem), 8rem)' }}>
+            <div className="space-y-2 md:space-y-2">
+              <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] 2xl:text-[7.5rem] font-bold leading-tight text-white max-w-5xl mx-auto" style={{ fontSize: 'clamp(3rem, calc(2.5vw + 2.5vh + 1rem), 9rem)' }}>
                 Soluciones personalizadas
                 <br className="hidden xs:block" />
                 {" "}basadas en <span className="text-secondary">evidencia científica</span>
@@ -724,7 +734,7 @@ const Home = () => {
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 relative">
             {/* Botón de cerrar */}
             <button
-              onClick={() => setShowPopup(false)}
+              onClick={handleClosePopup}
               className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
               <X className="w-5 h-5 text-gray-500" />
@@ -751,6 +761,7 @@ const Home = () => {
                 <Button
                   size="lg"
                   className="w-full text-lg px-8"
+                  onClick={handleClosePopup}
                   asChild
                 >
                   <a
@@ -763,7 +774,7 @@ const Home = () => {
                 </Button>
 
                 <button
-                  onClick={() => setShowPopup(false)}
+                  onClick={handleClosePopup}
                   className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
                 >
                   Ahora no, gracias

@@ -10,8 +10,8 @@ const Videos = () => {
       videos: [
         {
           title: "Cómo entender las rabietas desde el análisis de conducta",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          url: "https://www.tiktok.com/@a_su_medida/video/7539979797250821398",
+          thumbnail: "https://www.tiktok.com/@a_su_medida/video/7539979797250821398",
         },
         {
           title: "Estrategias para manejar comportamientos disruptivos",
@@ -144,7 +144,7 @@ const Videos = () => {
           </p>
           <Button size="lg" asChild variant="secondary" className="text-lg px-8">
             <a
-              href="#"
+              href="https://www.tiktok.com/@a_su_medida"
               target="_blank"
               rel="noopener noreferrer"
             >
