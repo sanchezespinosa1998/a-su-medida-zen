@@ -436,30 +436,30 @@ const Home = () => {
                   <Card className="shadow-card hover:shadow-soft transition-all duration-300">
                     <CardContent className="p-0">
                       <AccordionTrigger className="p-8 hover:no-underline">
-                        <div className="flex items-start space-x-6 w-full text-left">
+                        <div className="flex items-center space-x-6 w-full text-left">
                           <div className="bg-primary/10 p-4 rounded-xl flex-shrink-0">
                             <benefit.icon className="w-8 h-8 text-primary" />
                           </div>
-                          <div className="flex-1 space-y-4">
+                          <div className="flex-1">
                             <h3 className="text-2xl font-bold text-foreground">
                               {benefit.title}
                             </h3>
-                            <div className="grid gap-3">
-                              {benefit.details.map((detail, detailIndex) => (
-                                <div key={detailIndex} className="flex items-center space-x-3">
-                                  <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                                  <span className="font-sans text-lg leading-relaxed text-foreground">{detail}</span>
-                                </div>
-                              ))}
-                            </div>
                           </div>
                         </div>
                       </AccordionTrigger>
                       <AccordionContent className="px-8 pb-8">
-                        <div className="ml-[88px]">
+                        <div className="ml-[88px] space-y-4">
                           <p className="text-muted-foreground text-lg leading-relaxed">
                             {benefit.description}
                           </p>
+                          <div className="grid gap-3">
+                            {benefit.details.map((detail, detailIndex) => (
+                              <div key={detailIndex} className="flex items-center space-x-3">
+                                <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span className="font-sans text-lg leading-relaxed text-foreground">{detail}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </AccordionContent>
                     </CardContent>
@@ -537,34 +537,48 @@ const Home = () => {
             Más allá de las técnicas, ofrezco comprensión profunda y apoyo constante para transformar la vida de tu familia
           </p>
 
-          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-            {benefits.slice(4).map((benefit, index) => (
-              <Card key={index + 4} className="shadow-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-t-primary">
-                <CardContent className="p-8 text-center">
-                  <div className="flex justify-center mb-6">
-                    <div className="bg-gradient-to-br from-primary to-primary/80 p-5 rounded-2xl shadow-lg">
-                      <benefit.icon className="w-10 h-10 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-muted-foreground text-base leading-relaxed mb-6">
-                    {benefit.description}
-                  </p>
-                  <div className="space-y-3">
-                    {benefit.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-start space-x-2 text-left">
-                        <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-sm text-foreground">{detail}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-6">
+              {benefits.slice(4).map((benefit, index) => (
+                <AccordionItem
+                  key={index + 4}
+                  value={`item-${index + 4}`}
+                  className="border-none"
+                >
+                  <Card className="shadow-card hover:shadow-soft transition-all duration-300 border-t-4 border-t-primary">
+                    <CardContent className="p-0">
+                      <AccordionTrigger className="p-8 hover:no-underline">
+                        <div className="flex items-center space-x-6 w-full text-left">
+                          <div className="bg-gradient-to-br from-primary to-primary/80 p-4 rounded-xl flex-shrink-0">
+                            <benefit.icon className="w-8 h-8 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-2xl font-bold text-foreground">
+                              {benefit.title}
+                            </h3>
+                          </div>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-8 pb-8">
+                        <div className="ml-[88px] space-y-4">
+                          <p className="text-muted-foreground text-lg leading-relaxed">
+                            {benefit.description}
+                          </p>
+                          <div className="grid gap-3">
+                            {benefit.details.map((detail, detailIndex) => (
+                              <div key={detailIndex} className="flex items-center space-x-3">
+                                <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span className="font-sans text-lg leading-relaxed text-foreground">{detail}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </AccordionContent>
+                    </CardContent>
+                  </Card>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
           <div className="text-center mt-12">
             <Button size="lg" asChild variant="outline" className="bg-white text-primary hover:bg-gray-50 border-primary px-6 py-4 text-base md:px-12 md:py-7 md:text-xl transition-transform duration-300 hover:scale-110">
