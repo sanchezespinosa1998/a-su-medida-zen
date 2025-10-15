@@ -40,23 +40,40 @@ const SobreMi = () => {
             />
           </div>
           <div className="space-y-6 order-1 md:order-2">
-            <h1 className="text-4xl md:text-5xl font-bold">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold" style={{ fontSize: 'clamp(2.25rem, calc(2vw + 2vh + 1rem), 5rem)' }}>
               Miguel Olea
             </h1>
             <p className="text-xl text-primary font-semibold">
               Psicólogo Infanto-Juvenil Colegiado M-43853
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Soy psicólogo con grado en Psicología, especializado en clínica, y
-              cuento con dos másteres: Psicología General Sanitaria y Análisis
-              de Conducta Aplicado.
+              Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porque, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Ofrezco un enfoque riguroso basado en lo que funciona. Mi
-              prioridad es que cada persona comprenda el porqué de cada paso.
-              Facilito que las familias puedan aplicar cambios reales y
-              sostenibles.
+              Soy un profesional que realmente se dedica a cada persona de manera genuina. Mi vocación es ayudarte a transformar lo que sucede con todo el rigor de mi formación y la pasión que pongo en cada detalle. Mi objetivo es que confíes en que el cambio de tu hijo está en las mejores manos.
             </p>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                <span className="text-foreground">Psicólogo con mención especial en clínica.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                <span className="text-foreground">Colegiado en el colegio oficial de psicólogos con número: M-43853</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                <span className="text-foreground">Master en psicología general Sanitaria</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                <span className="text-foreground">Master en análisis de conducta aplicado al contexto terapéutico.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                <span className="text-foreground">Formación en epistemología de la ciencia e investigación.</span>
+              </li>
+            </ul>
           </div>
         </div>
 

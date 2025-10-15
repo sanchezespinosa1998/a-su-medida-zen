@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Clock, Euro } from "lucide-react";
+import { Check, Clock, Euro, Phone } from "lucide-react";
 import valoracionImage from "@/assets/valoracion.jpg";
 import asesoriaImage from "@/assets/asesoria-online.jpg";
 import tdahImage from "@/assets/tdah.jpg";
@@ -52,13 +52,28 @@ const Servicios = () => {
       ],
       image: tdahImage,
     },
+    {
+      title: "Llamada gratuita",
+      duration: "15 minutos",
+      price: "Gratis",
+      description:
+        "Antes de comenzar cualquier proceso, es importante conocernos y aclarar tus principales dudas. En esta llamada inicial gratuita evalúo si realmente puedo ayudarte y explico cómo trabajaríamos juntos para lograr los cambios que necesitas.",
+      features: [
+        "Evaluación inicial sin compromiso",
+        "Aclaración de dudas principales",
+        "Información sobre el proceso",
+        "Determinación de viabilidad del caso",
+      ],
+      image: asesoriaImage, // Usaré la misma imagen por ahora
+      highlighted: false,
+    },
   ];
 
   return (
     <div className="min-h-screen py-16 md:py-24 pt-36 md:pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-6xl mx-auto mb-16">
+        <div className="text-center max-w-7xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Servicios de psicología infantil
           </h1>
@@ -70,12 +85,12 @@ const Servicios = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <Card
                 key={index}
-                className={`shadow-card hover:shadow-soft transition-all overflow-hidden ${service.highlighted
+                className={`shadow-card hover:shadow-soft transition-all overflow-hidden flex flex-col h-full ${service.highlighted
                   ? "border-2 border-primary relative"
                   : ""
                   }`}
@@ -92,7 +107,7 @@ const Servicios = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <CardHeader>
+                <CardHeader className="flex-shrink-0">
                   <CardTitle className="text-2xl">{service.title}</CardTitle>
                   <div className="flex items-center justify-between pt-4">
                     <div className="flex items-center text-muted-foreground">
@@ -106,27 +121,31 @@ const Servicios = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <p className="text-muted-foreground">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start">
-                        <Check className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full" asChild>
-                    <a
-                      href={`https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20cita%20de%20${encodeURIComponent(
-                        service.title
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Reservar cita
-                    </a>
-                  </Button>
+                <CardContent className="flex flex-col justify-between flex-grow">
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground">{service.description}</p>
+                    <ul className="space-y-3">
+                      {service.features.map((feature, fIndex) => (
+                        <li key={fIndex} className="flex items-start">
+                          <Check className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-6">
+                    <Button className="w-full" asChild>
+                      <a
+                        href={`https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20cita%20de%20${encodeURIComponent(
+                          service.title
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Reservar cita
+                      </a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -134,7 +153,7 @@ const Servicios = () => {
         </div>
 
         {/* Method Reminder */}
-        <div className="bg-primary text-white p-8 md:p-12 rounded-2xl text-center max-w-6xl mx-auto">
+        <div className="bg-primary text-white p-8 md:p-12 rounded-2xl text-center max-w-7xl mx-auto">
           <h3 className="text-2xl font-bold mb-4">
             Cada sesión es única y personalizada
           </h3>

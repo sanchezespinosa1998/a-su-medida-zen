@@ -310,20 +310,16 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-slate-900 via-slate-800/70 to-transparent z-5"></div>
 
         {/* Media elipse en la base con resplandor */}
-        <div className="absolute bottom-[-10px] left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-10">
+        <div className="absolute bottom-[-10px] md:bottom-[-10px] left-1/2 w-[calc(100vw+100px)] md:w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-[40%] md:translate-y-1/2 z-10">
           {/* Resplandor de neon alrededor de la forma */}
-          <div className="absolute -inset-6 bg-gradient-to-r from-cyan-400/40 via-blue-400/60 to-cyan-400/40 rounded-t-full blur-xl animate-pulse"></div>
+          <div className="absolute -inset-4 md:-inset-6 bg-gradient-to-r from-cyan-400/20 md:from-cyan-400/40 via-blue-400/30 md:via-blue-400/60 to-cyan-400/20 md:to-cyan-400/40 rounded-t-full blur-lg md:blur-xl animate-pulse"></div>
 
           {/* Forma base */}
           <div className="absolute inset-0 bg-secondary rounded-t-full"></div>
         </div>
 
         {/* Efecto de neon resplandeciente en el borde */}
-        <div className="absolute bottom-[-10px] left-1/2 w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-1/2 z-20 rounded-t-full overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-white/15 to-transparent blur-sm animate-pulse"></div>
-          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent blur-md animate-neon-glow"></div>
-          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-blue-400/15 to-transparent blur-sm animate-neon-pulse"></div>
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/25 to-transparent blur-[2px] animate-neon-glow"></div>
+        <div className="absolute bottom-[-10px] md:bottom-[-10px] left-1/2 w-[calc(100vw+100px)] md:w-[calc(100vw+50px)] h-60 transform -translate-x-1/2 translate-y-[40%] md:translate-y-1/2 z-20 rounded-t-full overflow-hidden pointer-events-none">
         </div>
 
 
@@ -347,24 +343,24 @@ const Home = () => {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-tight text-white max-w-5xl mx-auto">
+            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-tight text-white max-w-5xl mx-auto" style={{ fontSize: 'clamp(3rem, calc(2.5vw + 2.5vh + 1rem), 8rem)' }}>
               Soluciones personalizadas
               <br className="hidden xs:block" />
               {" "}basadas en <span className="text-secondary">evidencia científica</span>
               <br className="hidden xs:block" />
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+            <div className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed h-[5.5rem] md:h-[6.5rem] flex items-center justify-center">
               <TypewriterCycle />
-            </p>
+            </div>
           </div>
         </div>
 
         {/* CTA encima de la forma redondeada - Círculo principal */}
-        <Link to="/servicios" className="absolute bottom-[38px] left-1/2 transform -translate-x-1/2 z-30 group">
+        <Link to="/servicios" className="absolute bottom-[60px] md:bottom-[38px] left-1/2 transform -translate-x-1/2 z-30 group">
           {/* Resplandor de neon alrededor del círculo */}
           <div
             className={`absolute rounded-full blur-md transition-all duration-500 ${laserProgress > 0.8
-              ? '-inset-4 bg-gradient-to-r from-cyan-400/40 via-blue-400/50 to-cyan-400/40 blur-lg'
+              ? '-inset-3 bg-gradient-to-r from-cyan-400/30 via-blue-400/40 to-cyan-400/30 blur-md'
               : '-inset-3 bg-gradient-to-r from-cyan-400/40 via-blue-400/60 to-cyan-400/40'
               }`}
             style={laserProgress <= 0.8 ? { animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' } : {}}
@@ -373,17 +369,23 @@ const Home = () => {
           {/* Resplandor adicional intenso cuando el láser está cerca */}
           {laserProgress > 0.8 && (
             <>
-              <div className="absolute -inset-5 bg-gradient-to-r from-cyan-400/25 via-blue-400/35 to-cyan-400/25 rounded-full blur-xl"></div>
-              <div className="absolute -inset-6 bg-gradient-to-r from-cyan-300/15 via-blue-300/20 to-cyan-300/15 rounded-full blur-2xl"></div>
+              <div className="absolute -inset-3 bg-gradient-to-r from-cyan-400/20 via-blue-400/25 to-cyan-400/20 rounded-full blur-lg"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-300/10 via-blue-300/15 to-cyan-300/10 rounded-full blur-xl"></div>
             </>
           )}
 
-          {/* Bocadillo que aparece en hover */}
-          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-            <div className="bg-white rounded-2xl px-6 py-3 shadow-xl whitespace-nowrap">
-              <span className="text-primary font-semibold text-lg">Empieza ahora</span>
-              {/* Flecha del bocadillo */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] w-4 h-4 bg-white transform rotate-45"></div>
+          {/* Bocadillo que aparece en hover (desktop) o cuando el láser toca (solo móvil) */}
+          <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-40 ${laserProgress > 0.8
+              ? 'top-full md:bottom-full mt-4 md:mb-4 opacity-100 md:opacity-0'
+              : 'bottom-full mb-4 opacity-0'
+            } md:group-hover:opacity-100`}>
+            <div className="bg-white rounded-xl px-4 py-2 whitespace-nowrap relative z-40">
+              <span className="text-primary font-semibold text-sm">Empieza ahora</span>
+              {/* Flecha del bocadillo - se ajusta según la posición */}
+              <div className={`absolute w-4 h-4 bg-white left-1/2 -translate-x-1/2 ${laserProgress > 0.8
+                  ? 'bottom-full md:top-full mb-[1px] md:-mt-[1px] rotate-[225deg] md:rotate-45'
+                  : 'top-full -mt-[1px] rotate-45'
+                }`}></div>
             </div>
           </div>
 
@@ -403,7 +405,7 @@ const Home = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-secondary py-16 md:py-24 relative overflow-hidden">
+      <section className="bg-secondary py-16 md:py-24 relative overflow-hidden -mt-[30px] md:mt-0">
 
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -479,27 +481,36 @@ const Home = () => {
             <div className="order-2 md:order-1">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Sobre mí</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Soy Miguel Olea, psicólogo infanto-juvenil. Acompaño a familias para que sus
-                hijos desarrollen habilidades emocionales y conductuales sólidas, con un enfoque
-                práctico, cercano y basado en evidencia.
+                Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porque, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
               </p>
-              <ul className="space-y-3">
+              <p className="text-lg text-muted-foreground mb-6">
+                Soy un profesional que realmente se dedica a cada persona de manera genuina. Mi vocación es ayudarte a transformar lo que sucede con todo el rigor de mi formación y la pasión que pongo en cada detalle. Mi objetivo es que confíes en que el cambio de tu hijo está en las mejores manos.
+              </p>
+              <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Experiencia acompañando a niños con TDAH, ansiedad y depresión.</span>
+                  <span className="text-foreground">Psicólogo con mención especial en clínica.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Intervenciones personalizadas y medibles para cada familia.</span>
+                  <span className="text-foreground">Colegiado en el colegio oficial de psicólogos con número: M-43853</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Comunicación clara, herramientas prácticas y seguimiento cercano.</span>
+                  <span className="text-foreground">Master en psicología general Sanitaria</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                  <span className="text-foreground">Master en análisis de conducta aplicado al contexto terapéutico.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
+                  <span className="text-foreground">Formación en epistemología de la ciencia e investigación.</span>
                 </li>
               </ul>
               <div className="mt-8">
                 <Button size="lg" asChild>
-                  <Link to="/sobre-mi">Conoce más</Link>
+                  <Link to="/servicios">Reserva ahora</Link>
                 </Button>
               </div>
             </div>
@@ -515,10 +526,8 @@ const Home = () => {
 
       {/* Benefits Section Part 2 - Fondo Blanco */}
       <section className="bg-background py-16 md:py-24 relative overflow-hidden">
-        {/* Media elipse en la base en azul oscuro */}
-        <div className="absolute bottom-0 left-1/2 w-[calc(100vw+50px)] h-60 bg-primary transform -translate-x-1/2 translate-y-1/2 rounded-t-full z-10"></div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Badge */}
           <div className="flex justify-center mb-6">
             <div className="inline-flex items-center gap-2.5 px-4 py-0.5 bg-primary/10 backdrop-blur-sm border border-primary rounded-full">
