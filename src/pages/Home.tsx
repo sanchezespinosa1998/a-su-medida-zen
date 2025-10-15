@@ -16,6 +16,8 @@ import {
   Shield,
   Smile,
   Star,
+  Phone,
+  X,
 } from "lucide-react";
 import formulaImage from "@/assets/formula-cientifica.jpg";
 import miguelPhoto from "@/assets/miguel.jpg";
@@ -83,6 +85,7 @@ const TypewriterCycle = () => {
 
 const Home = () => {
   const [laserProgress, setLaserProgress] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const benefitsEndRef = useRef<HTMLDivElement>(null);
 
@@ -103,6 +106,15 @@ const Home = () => {
     handleScroll(); // Llamada inicial
 
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Mostrar popup después de 5 segundos
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const benefits = [
@@ -705,6 +717,62 @@ const Home = () => {
           </Button>
         </div>
       </section>
+
+      {/* Popup de Llamada Gratuita */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 relative">
+            {/* Botón de cerrar */}
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <X className="w-5 h-5 text-gray-500" />
+            </button>
+
+            {/* Contenido del popup */}
+            <div className="p-6 pt-8 text-center">
+              {/* Icono de teléfono */}
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-8 h-8 text-primary" />
+              </div>
+
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                ¡Llamada gratuita!
+              </h3>
+
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                ¿Tienes dudas sobre si puedo ayudarte a tu hijo? Habla conmigo 15 minutos
+                <strong className="text-primary"> completamente gratis</strong> para aclarar
+                tus principales dudas y ver si realmente puedo ayudarte.
+              </p>
+
+              <div className="space-y-3">
+                <Button
+                  size="lg"
+                  className="w-full text-lg px-8"
+                  asChild
+                >
+                  <a
+                    href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20solicitar%20la%20llamada%20gratuita%20de%2015%20minutos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Solicitar llamada gratuita
+                  </a>
+                </Button>
+
+                <button
+                  onClick={() => setShowPopup(false)}
+                  className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  Ahora no, gracias
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
