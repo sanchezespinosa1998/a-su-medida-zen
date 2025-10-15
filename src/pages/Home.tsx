@@ -325,7 +325,7 @@ const Home = () => {
 
         {/* Contenido central */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 md:pt-0 md:pb-24 w-full relative z-10 -translate-y-5">
-          <div className="text-center space-y-8">
+          <div className="text-center">
             {/* Badge con la fórmula */}
             <div className="flex justify-center mb-6">
               <div className="relative inline-block">
@@ -343,14 +343,16 @@ const Home = () => {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-tight text-white max-w-5xl mx-auto" style={{ fontSize: 'clamp(3rem, calc(2.5vw + 2.5vh + 1rem), 8rem)' }}>
-              Soluciones personalizadas
-              <br className="hidden xs:block" />
-              {" "}basadas en <span className="text-secondary">evidencia científica</span>
-              <br className="hidden xs:block" />
-            </h1>
-            <div className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed h-[5.5rem] md:h-[6.5rem] flex items-center justify-center">
-              <TypewriterCycle />
+            <div className="space-y-2 md:space-y-8">
+              <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-tight text-white max-w-5xl mx-auto" style={{ fontSize: 'clamp(3rem, calc(2.5vw + 2.5vh + 1rem), 8rem)' }}>
+                Soluciones personalizadas
+                <br className="hidden xs:block" />
+                {" "}basadas en <span className="text-secondary">evidencia científica</span>
+                <br className="hidden xs:block" />
+              </h1>
+              <div className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed h-[5.5rem] md:h-[6.5rem] flex items-center justify-center">
+                <TypewriterCycle />
+              </div>
             </div>
           </div>
         </div>
@@ -376,15 +378,15 @@ const Home = () => {
 
           {/* Bocadillo que aparece en hover (desktop) o cuando el láser toca (solo móvil) */}
           <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-40 ${laserProgress > 0.8
-              ? 'top-full md:bottom-full mt-4 md:mb-4 opacity-100 md:opacity-0'
-              : 'bottom-full mb-4 opacity-0'
+            ? 'top-full md:bottom-full mt-4 md:mb-4 opacity-100 md:opacity-0'
+            : 'bottom-full mb-4 opacity-0'
             } md:group-hover:opacity-100`}>
             <div className="bg-white rounded-xl px-4 py-2 whitespace-nowrap relative z-40">
               <span className="text-primary font-semibold text-sm">Empieza ahora</span>
               {/* Flecha del bocadillo - se ajusta según la posición */}
               <div className={`absolute w-4 h-4 bg-white left-1/2 -translate-x-1/2 ${laserProgress > 0.8
-                  ? 'bottom-full md:top-full mb-[1px] md:-mt-[1px] rotate-[225deg] md:rotate-45'
-                  : 'top-full -mt-[1px] rotate-45'
+                ? 'bottom-full md:top-full mb-[1px] md:-mt-[1px] rotate-[225deg] md:rotate-45'
+                : 'top-full -mt-[1px] rotate-45'
                 }`}></div>
             </div>
           </div>
