@@ -346,7 +346,7 @@ const Home = () => {
 
 
         {/* Contenido central */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-8 md:pt-2 md:pb-12 w-full relative z-10 md:-translate-y-0">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 md:pt-2 md:pb-12 w-full relative z-10 md:-translate-y-0">
           <div className="text-center">
             {/* Badge con la fórmula */}
             <div className="flex justify-center mb-6">
