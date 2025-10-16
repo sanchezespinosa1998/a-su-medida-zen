@@ -398,20 +398,38 @@ const Home = () => {
             </>
           )}
 
-          {/* Bocadillo que aparece en hover (desktop) o cuando el láser toca (solo móvil) */}
-          <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-40 ${laserProgress > 0.8
-            ? 'top-full md:bottom-full mt-4 md:mb-4 opacity-100 md:opacity-0'
-            : 'bottom-full mb-4 opacity-0'
-            } md:group-hover:opacity-100`}>
-            <div className="bg-white rounded-xl px-4 py-2 whitespace-nowrap relative z-40">
-              <span className="text-primary font-semibold text-sm">Empieza ahora</span>
-              {/* Flecha del bocadillo - se ajusta según la posición */}
-              <div className={`absolute w-4 h-4 bg-white left-1/2 -translate-x-1/2 ${laserProgress > 0.8
-                ? 'bottom-full md:top-full mb-[1px] md:-mt-[1px] rotate-[225deg] md:rotate-45'
-                : 'top-full -mt-[1px] rotate-45'
-                }`}></div>
+          {/* Bocadillo superior - Solo en ordenador */}
+          {laserProgress > 0.8 && (
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-40 bottom-full mb-4">
+              <div className="relative">
+                {/* Resplandor del bocadillo */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 via-blue-400/40 to-cyan-400/30 rounded-full blur-sm"></div>
+
+                {/* Contenido del bocadillo */}
+                <div className="relative bg-white rounded-xl px-4 py-2 shadow-lg border border-cyan-400/30">
+                  <span className="text-primary font-semibold text-sm whitespace-nowrap">Empieza ahora</span>
+
+                  {/* Flecha del bocadillo apuntando hacia abajo */}
+                  <div className="absolute w-4 h-4 bg-white left-1/2 -translate-x-1/2 top-full -mt-[1px] rotate-45"></div>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Bocadillo inferior - Solo en móvil */}
+          {laserProgress > 0.8 && (
+            <div className="block md:hidden absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-40 top-full mt-4">
+              <div className="relative">
+                {/* Contenido del bocadillo */}
+                <div className="relative bg-white rounded-xl px-4 py-2 border border-cyan-400/30">
+                  <span className="text-primary font-semibold text-sm whitespace-nowrap">Empieza ahora</span>
+
+                  {/* Flecha del bocadillo apuntando hacia arriba */}
+                  <div className="absolute w-4 h-4 bg-white left-1/2 -translate-x-1/2 bottom-full mb-[1px] rotate-[225deg]"></div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Círculo blanco con icono */}
           <div
@@ -499,41 +517,41 @@ const Home = () => {
       </section>
 
       {/* Sobre mí - Miguel */}
-      <section className="bg-muted py-16 md:py-24">
+      <section className="bg-primary py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Sobre mí</h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Sobre mí</h2>
+              <p className="text-lg text-white/90 mb-6">
                 Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porque, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
               </p>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-white/90 mb-6">
                 Soy un profesional que realmente se dedica a cada persona de manera genuina. Mi vocación es ayudarte a transformar lo que sucede con todo el rigor de mi formación y la pasión que pongo en cada detalle. Mi objetivo es que confíes en que el cambio de tu hijo está en las mejores manos.
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Psicólogo con mención especial en clínica.</span>
+                  <span className="mt-1 w-2 h-2 rounded-full bg-white"></span>
+                  <span className="text-white">Psicólogo con mención especial en clínica.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Colegiado en el colegio oficial de psicólogos con número: M-43853</span>
+                  <span className="mt-1 w-2 h-2 rounded-full bg-white"></span>
+                  <span className="text-white">Colegiado en el colegio oficial de psicólogos con número: M-43853</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Master en psicología general Sanitaria</span>
+                  <span className="mt-1 w-2 h-2 rounded-full bg-white"></span>
+                  <span className="text-white">Master en psicología general Sanitaria</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Master en análisis de conducta aplicado al contexto terapéutico.</span>
+                  <span className="mt-1 w-2 h-2 rounded-full bg-white"></span>
+                  <span className="text-white">Master en análisis de conducta aplicado al contexto terapéutico.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-primary"></span>
-                  <span className="text-foreground">Formación en epistemología de la ciencia e investigación.</span>
+                  <span className="mt-1 w-2 h-2 rounded-full bg-white"></span>
+                  <span className="text-white">Formación en epistemología de la ciencia e investigación.</span>
                 </li>
               </ul>
               <div className="mt-8">
-                <Button size="lg" asChild>
+                <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
                   <Link to="/servicios">Reserva ahora</Link>
                 </Button>
               </div>
@@ -752,7 +770,7 @@ const Home = () => {
               </h3>
 
               <p className="text-gray-600 mb-6 leading-relaxed">
-                ¿Tienes dudas sobre si puedo ayudarte a tu hijo? Habla conmigo 15 minutos
+                ¿Tienes dudas sobre si puedo ayudarte con tu hijo? Habla conmigo 15 minutos
                 <strong className="text-primary"> completamente gratis</strong> para aclarar
                 tus principales dudas y ver si realmente puedo ayudarte.
               </p>

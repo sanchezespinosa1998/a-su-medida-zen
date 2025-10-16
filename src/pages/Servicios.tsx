@@ -8,11 +8,26 @@ import tdahImage from "@/assets/tdah.jpg";
 const Servicios = () => {
   const services = [
     {
+      title: "Llamada gratuita",
+      duration: "15 minutos",
+      price: "Gratis",
+      description:
+        "Antes de comenzar cualquier proceso, es importante conocernos y aclarar tus principales dudas. En esta llamada inicial gratuita evalúo si realmente puedo ayudarte y explico cómo trabajaríamos juntos para lograr los cambios que necesitas.",
+      features: [
+        "Evaluación inicial sin compromiso",
+        "Aclaración de dudas principales",
+        "Información sobre el proceso",
+        "Determinación de viabilidad del caso",
+      ],
+      image: asesoriaImage,
+      highlighted: false,
+    },
+    {
       title: "Valoración y resolución de dudas",
       duration: "40 minutos",
       price: "30€",
       description:
-        "Muchos padres se sienten perdidos y llenos de dudas. En 50 minutos te ayudo a aclarar lo que sucede, resolviendo tus dudas desde un enfoque profesional. Analizo tu situación y te explico qué esperar de tu hijo, del colegio o del proceso actual.",
+        "Muchos padres se sienten perdidos y llenos de dudas. En 40 minutos te ayudo a aclarar lo que sucede, resolviendo tus dudas desde un enfoque profesional. Analizo tu situación y te explico qué esperar de tu hijo, del colegio o del proceso actual.",
       features: [
         "Análisis profesional de tu situación",
         "Resolución de dudas específicas",
@@ -51,21 +66,6 @@ const Servicios = () => {
         "Seguimientos opcionales disponibles",
       ],
       image: tdahImage,
-    },
-    {
-      title: "Llamada gratuita",
-      duration: "15 minutos",
-      price: "Gratis",
-      description:
-        "Antes de comenzar cualquier proceso, es importante conocernos y aclarar tus principales dudas. En esta llamada inicial gratuita evalúo si realmente puedo ayudarte y explico cómo trabajaríamos juntos para lograr los cambios que necesitas.",
-      features: [
-        "Evaluación inicial sin compromiso",
-        "Aclaración de dudas principales",
-        "Información sobre el proceso",
-        "Determinación de viabilidad del caso",
-      ],
-      image: asesoriaImage, // Usaré la misma imagen por ahora
-      highlighted: false,
     },
   ];
 
