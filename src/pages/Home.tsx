@@ -109,22 +109,16 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Verificar si el popup ya se mostró antes
-    const hasShownPopup = localStorage.getItem('popup-shown');
+    // Mostrar popup después de 5 segundos en cada carga de la página
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 5000);
 
-    if (!hasShownPopup) {
-      // Mostrar popup después de 5 segundos solo si no se ha mostrado antes
-      const timer = setTimeout(() => {
-        setShowPopup(true);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClosePopup = () => {
     setShowPopup(false);
-    localStorage.setItem('popup-shown', 'true');
   };
 
   const benefits = [
