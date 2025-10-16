@@ -2,26 +2,37 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 
+// Importar las imágenes de TikTok
+import tiktok1 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091357.png";
+import tiktok2 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091414.png";
+import tiktok3 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091441.png";
+import tiktok4 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091505.png";
+import tiktok5 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091524.png";
+import tiktok6 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091541.png";
+import tiktok7 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091556.png";
+import tiktok8 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091612.png";
+import tiktok9 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091636.png";
+
 const Videos = () => {
-  // Placeholder videos - estos se pueden reemplazar con URLs reales de TikTok
+  // Videos con thumbnails reales de TikTok
   const videoCategories = [
     {
       category: "Conducta infantil",
       videos: [
         {
-          title: "Cómo entender las rabietas desde el análisis de conducta",
+          title: "Medicación para el TDAH",
           url: "https://www.tiktok.com/@a_su_medida/video/7539979797250821398",
-          thumbnail: "https://www.tiktok.com/@a_su_medida/video/7539979797250821398",
+          thumbnail: tiktok1,
         },
         {
-          title: "Estrategias para manejar comportamientos disruptivos",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "La ciencia encuentra las causas del TDAH",
+          url: "https://www.tiktok.com/@a_su_medida/video/7548916362312305942",
+          thumbnail: tiktok2,
         },
         {
-          title: "El ABC de la conducta explicado para padres",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "El TDAH no es una enfermedad",
+          url: "https://www.tiktok.com/@a_su_medida/video/7560419933461433603",
+          thumbnail: tiktok3,
         },
       ],
     },
@@ -29,19 +40,19 @@ const Videos = () => {
       category: "Educación emocional",
       videos: [
         {
-          title: "Validación emocional: qué es y cómo aplicarla",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "Medicación en el TDAH",
+          url: "https://www.tiktok.com/@a_su_medida/video/7558175910323801347",
+          thumbnail: tiktok4,
         },
         {
-          title: "Enseñar a los niños a reconocer sus emociones",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "Diagnóstico del TDAH",
+          url: "https://www.tiktok.com/@a_su_medida/video/7557052946425466134",
+          thumbnail: tiktok5,
         },
         {
-          title: "Gestión del enfado en niños pequeños",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "Desmintiendo virales",
+          url: "https://www.tiktok.com/@a_su_medida/video/7555579233410567446",
+          thumbnail: tiktok6,
         },
       ],
     },
@@ -49,19 +60,19 @@ const Videos = () => {
       category: "Consejos para padres",
       videos: [
         {
-          title: "Cómo establecer límites efectivos sin gritos",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "Malas prácticas en el TDAH",
+          url: "https://www.tiktok.com/@a_su_medida/video/7554674868055182614",
+          thumbnail: tiktok7,
         },
         {
-          title: "Refuerzo positivo: errores comunes que cometemos",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "Historia de un niño con TDAH",
+          url: "https://www.tiktok.com/@a_su_medida/video/7553717123693022486",
+          thumbnail: tiktok8,
         },
         {
-          title: "Rutinas que funcionan para niños con TDAH",
-          url: "#",
-          thumbnail: "https://via.placeholder.com/400x700/0ea5e9/ffffff?text=TikTok+Video",
+          title: "El eterno debate sobre el TDAH",
+          url: "https://www.tiktok.com/@a_su_medida/video/7551399099174554902",
+          thumbnail: tiktok9,
         },
       ],
     },
@@ -86,48 +97,49 @@ const Videos = () => {
           </p>
         </div>
 
-        {/* Video Categories */}
-        <div className="max-w-6xl mx-auto space-y-16 mb-16">
-          {videoCategories.map((category, catIndex) => (
-            <div key={catIndex}>
-              <h2 className="text-2xl font-bold mb-8 text-primary">
-                {category.category}
-              </h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.videos.map((video, vidIndex) => (
-                  <Card
-                    key={vidIndex}
-                    className="shadow-card hover:shadow-soft transition-all overflow-hidden group"
+        {/* Video Grid */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videoCategories.flatMap((category) =>
+              category.videos.map((video, vidIndex) => (
+                <Card
+                  key={vidIndex}
+                  className="shadow-card hover:shadow-soft transition-all overflow-hidden group"
+                >
+                  <a
+                    href={video.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
                   >
-                    <a
-                      href={video.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      {/* Formato vertical de TikTok 9:16 */}
-                      <div className="relative aspect-[9/16] bg-gradient-to-br from-cyan-500 to-blue-600 overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <svg className="w-16 h-16 text-white opacity-80" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                          </svg>
-                        </div>
-                        {/* Overlay hover */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                          <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
+                    {/* Formato vertical de TikTok 9:16 */}
+                    <div className="relative aspect-[9/16] overflow-hidden">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Overlay con icono de TikTok */}
+                      <div className="absolute top-4 right-4 bg-black/50 rounded-full p-2">
+                        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
                       </div>
-                      <CardContent className="p-4">
-                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                          {video.title}
-                        </h3>
-                      </CardContent>
-                    </a>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ))}
+                      {/* Overlay hover */}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </div>
+                    <CardContent className="p-4">
+                      <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                        {video.title}
+                      </h3>
+                    </CardContent>
+                  </a>
+                </Card>
+              ))
+            )}
+          </div>
         </div>
 
         {/* TikTok Follow Section */}
