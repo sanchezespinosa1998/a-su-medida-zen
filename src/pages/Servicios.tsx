@@ -4,6 +4,7 @@ import { Check, Clock, Euro, Phone } from "lucide-react";
 import valoracionImage from "@/assets/valoracion.jpg";
 import asesoriaImage from "@/assets/asesoria-online.jpg";
 import tdahImage from "@/assets/tdah.jpg";
+import cursosOnlineImage from "@/assets/cursos online.jpeg";
 
 const Servicios = () => {
   const services = [
@@ -12,12 +13,12 @@ const Servicios = () => {
       duration: "15 minutos",
       price: "Gratis",
       description:
-        "Antes de comenzar cualquier proceso, es importante conocernos y aclarar tus principales dudas. En esta llamada inicial gratuita evalúo si realmente puedo ayudarte y explico cómo trabajaríamos juntos para lograr los cambios que necesitas.",
+        "Imagina poder contarme lo que te preocupa sobre tu hijo y recibir, en esa misma llamada, claridad sobre cómo podemos transformar su vida. Esta llamada gratuita es tu primera puerta a un cambio real: te escucharé, te entenderé, y te mostraré cómo podemos trabajar juntos para que tu hijo y tú empecéis a ver resultados. Es el primer paso, sin compromiso, hacia la solución que llevas tanto tiempo buscando. ¡Reserva y hablemos!",
       features: [
-        "Evaluación inicial sin compromiso",
-        "Aclaración de dudas principales",
-        "Información sobre el proceso",
-        "Determinación de viabilidad del caso",
+        "Te escucho con atención",
+        "Te muestro el enfoque que mejor se adapta a tu hijo",
+        "Sin compromiso ni presiones",
+        "Sal de la llamada sabiendo cuál es el primer paso para ayudarle",
       ],
       image: asesoriaImage,
       highlighted: false,
@@ -41,7 +42,7 @@ const Servicios = () => {
       duration: "50 minutos",
       price: "60€",
       description:
-        "En mi enfoque psicológico aseguro a los padres que la conducta de sus hijos siempre puede cambiar. Gracias a la ciencia y la experiencia, sabemos qué claves permiten modificar comportamientos. En pocas sesiones diseñamos una intervención centrada en lo que realmente importa.",
+        "Siempre aseguro a los padres que la conducta de sus hijos siempre se puede cambiar. Esto no es sólo una promesa, está respaldado por la ciencia. Gracias a la investigación y experiencia, sabemos qué claves permiten modificar comportamientos. Mi compromiso es usar ese conocimiento para que, trabajando juntos, en pocas sesiones, hagamos un análisis detallado y diseñemos una intervención centrada en lo que realmente importa. Así, te daré las claves específicas para que la conducta de tu hijo cambie en el menor tiempo posible.",
       features: [
         "Sesiones individualizadas",
         "Plan de intervención científico",
@@ -50,7 +51,7 @@ const Servicios = () => {
         "Cambios medibles y duraderos",
       ],
       highlighted: true,
-      image: asesoriaImage,
+      image: cursosOnlineImage,
     },
     {
       title: "Consultoría",

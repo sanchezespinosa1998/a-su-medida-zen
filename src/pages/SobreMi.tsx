@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Award, BookOpen, Users } from "lucide-react";
 import miguelImage from "@/assets/miguel.jpg";
+import formulaokImage from "@/assets/formulaok.jpeg";
 
 const SobreMi = () => {
   const qualifications = [
@@ -48,9 +49,6 @@ const SobreMi = () => {
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porque, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Soy un profesional que realmente se dedica a cada persona de manera genuina. Mi vocación es ayudarte a transformar lo que sucede con todo el rigor de mi formación y la pasión que pongo en cada detalle. Mi objetivo es que confíes en que el cambio de tu hijo está en las mejores manos.
             </p>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
@@ -187,13 +185,17 @@ const SobreMi = () => {
           </h2>
           <div className="bg-white p-16 rounded-2xl shadow-card">
             <div className="flex items-center justify-center">
-              <span className="text-8xl font-sans font-light text-primary tracking-wide">c = f(e,h)</span>
+              <img
+                src={formulaokImage}
+                alt="Fórmula científica"
+                className="max-w-full h-auto"
+              />
             </div>
           </div>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            Esta fórmula representa la precisión científica detrás de mis
-            intervenciones. No necesitas conocerla, solo saber que gracias a
-            ella logramos cambios reales y duraderos.
+            Una fórmula como esta, que refleja las relaciones de reforzamiento que usamos, es el tipo
+            de ciencia que hay detrás de mis intervenciones. No necesitas conocerla a fondo, pero sí
+            saber que esta precisión es lo que permite lograr cambios reales y duraderos en tu hijo.
           </p>
         </div>
 

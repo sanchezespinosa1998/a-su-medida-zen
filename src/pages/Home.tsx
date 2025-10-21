@@ -18,6 +18,10 @@ import {
   Star,
   Phone,
   X,
+  Target,
+  BookOpen,
+  Zap,
+  CheckCircle,
 } from "lucide-react";
 import formulaImage from "@/assets/formula-cientifica.jpg";
 import miguelPhoto from "@/assets/miguel.jpg";
@@ -27,27 +31,30 @@ import { useState, useEffect, useRef } from "react";
 
 // Componente para efecto typewriter en bucle
 const TypewriterCycle = () => {
-  // Prefijo fijo y frases variables (solo el complemento)
-  const prefix = "De psicólogo ";
-  const words = [
-    "EX-TDAH para niños con TDAH.",
-    "especializado para niños con ansiedad.",
-    "empático para niños con depresión.",
-    "conductual para niños con problemas de conducta."
+  // Frase estática base
+  const baseText = "Psicólogo EX-TDAH para niños";
+
+  // Frases variables para el efecto typewriter
+  const conditions = [
+    "con TDAH",
+    "con ansiedad",
+    "con depresión",
+    "con problemas de conducta"
   ];
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+  const [currentConditionIndex, setCurrentConditionIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const currentWord = words[currentWordIndex];
+    const currentCondition = conditions[currentConditionIndex];
 
     if (!isDeleting) {
       // Escribiendo
-      if (currentIndex < currentWord.length) {
+      if (currentIndex < currentCondition.length) {
         const timeout = setTimeout(() => {
-          setDisplayText(currentWord.substring(0, currentIndex + 1));
+          setDisplayText(currentCondition.substring(0, currentIndex + 1));
           setCurrentIndex(prev => prev + 1);
         }, 60);
         return () => clearTimeout(timeout);
@@ -62,22 +69,21 @@ const TypewriterCycle = () => {
       // Borrando
       if (currentIndex > 0) {
         const timeout = setTimeout(() => {
-          setDisplayText(currentWord.substring(0, currentIndex - 1));
+          setDisplayText(currentCondition.substring(0, currentIndex - 1));
           setCurrentIndex(prev => prev - 1);
         }, 35);
         return () => clearTimeout(timeout);
       } else {
-        // Terminó de borrar, pasa a la siguiente palabra
+        // Terminó de borrar, pasa a la siguiente condición
         setIsDeleting(false);
-        setCurrentWordIndex(prev => (prev + 1) % words.length);
+        setCurrentConditionIndex(prev => (prev + 1) % conditions.length);
       }
     }
-  }, [currentIndex, isDeleting, currentWordIndex, words]);
+  }, [currentIndex, isDeleting, currentConditionIndex, conditions]);
 
   return (
     <span className="text-white/100">
-      {prefix}
-      {displayText}
+      {baseText} {displayText}
       <span className="animate-pulse">|</span>
     </span>
   );
@@ -123,47 +129,58 @@ const Home = () => {
 
   const benefits = [
     {
-      icon: MessageSquare,
-      title: "Mejorar la comunicación con tu hijo",
-      description: "Aprende técnicas específicas para comunicarte de manera efectiva con tu hijo, estableciendo conexiones más profundas y comprensión mutua. Desarrollamos estrategias adaptadas a la edad y personalidad de tu hijo para crear un ambiente de confianza y diálogo abierto.",
-      details: [
-        "Técnicas de comunicación no verbal",
-        "Estrategias para momentos difíciles",
-        "Crear espacios de diálogo seguros",
-        "Escucha activa y empática"
-      ]
-    },
-    {
       icon: TrendingUp,
       title: "Reducir rabietas y comportamientos difíciles",
-      description: "Transforma los momentos de crisis en oportunidades de aprendizaje. Te enseño a identificar los desencadenantes, prevenir situaciones conflictivas y manejar las emociones intensas de manera constructiva, creando un ambiente más tranquilo en casa.",
+      description: "Las rabietas, aunque pueden parecer un enorme reto para los padres, son algo que ya conocemos a fondo: se sabe perfectamente por qué ocurren y, lo mejor de todo, es que es sencillo de modificar. Con la guía adecuada, lo que hoy parece un problema complejo puede dejar de serlo rápidamente. Aquí te enseñaré cómo.",
       details: [
-        "Identificación de patrones de comportamiento",
-        "Técnicas de prevención y anticipación",
-        "Manejo de emociones intensas",
-        "Estrategias de calma y autocontrol"
+        "Comprender qué desencadena las rabietas y cómo prevenirlas",
+        "Aprender a intervenir antes, durante y después de la conducta para reducir su frecuencia e intensidad",
+        "Desarrollar habilidades de comunicación y regulación emocional en tu hijo",
+        "Implementar estrategias positivas que fortalezcan la relación y el bienestar familiar"
       ]
     },
     {
-      icon: Users,
-      title: "Soluciones personalizadas para tu familia",
-      description: "Cada familia es única, por eso desarrollo estrategias específicamente diseñadas para tu situación particular. Analizo tu contexto familiar, las necesidades específicas de tu hijo y creo un plan de acción que se adapte perfectamente a vuestra realidad.",
+      icon: Zap,
+      title: "Mejorar la atención e hiperactividad",
+      description: "La hiperactividad y el déficit de atención no tienen por qué ser solo un problema; bien encauzados, pueden convertirse en grandes fortalezas. Con las estrategias adecuadas, podemos potenciar las capacidades únicas de tu hijo, como su creatividad y energía, mientras reducimos aquello que dificulta su día a día.",
       details: [
-        "Análisis personalizado de tu situación",
-        "Plan de acción adaptado a tu familia",
-        "Estrategias específicas para tu contexto",
-        "Seguimiento y ajustes continuos"
+        "Identificar los momentos clave en los que tu hijo puede brillar y cómo dirigir esa energía",
+        "Enseñar técnicas para canalizar la hiperactividad en actividades productivas",
+        "Desarrollar rutinas que ayuden a mejorar la atención sin perder la espontaneidad",
+        "Transformar la impulsividad en toma de decisiones rápida y eficaz"
       ]
     },
     {
-      icon: Shield,
-      title: "Cambios duraderos, no parches temporales",
-      description: "No buscamos soluciones rápidas que se olvidan al día siguiente. Trabajamos en cambios profundos y estructurales que perduran en el tiempo, creando bases sólidas para el desarrollo emocional y conductual de tu hijo a largo plazo.",
+      icon: CheckCircle,
+      title: "Lograr que siga instrucciones sin discusiones",
+      description: "Que tu hijo siga instrucciones sin que todo se convierta en una batalla es más sencillo de lo que parece. Con las herramientas adecuadas, podemos convertir esas situaciones tensas en momentos de cooperación, consiguiendo que las instrucciones se sigan de forma fluida y sin conflictos.",
       details: [
-        "Intervenciones basadas en evidencia científica",
-        "Cambios estructurales en el comportamiento",
-        "Desarrollo de habilidades permanentes",
-        "Prevención de recaídas"
+        "Establecer instrucciones claras y adaptadas a la edad de tu hijo",
+        "Enseñar cómo dar las indicaciones en el momento y tono adecuados para evitar resistencia",
+        "Reforzar el cumplimiento de las instrucciones de forma positiva, motivando la cooperación",
+        "Crear hábitos que hagan que seguir instrucciones se vuelva algo natural y libre de disputas"
+      ]
+    },
+    {
+      icon: BookOpen,
+      title: "Mejorar el rendimiento académico",
+      description: "Puede parecer un reto cuando sientes que en el colegio tu hijo no encuentra su lugar o cuando en casa las tareas se vuelven una fuente de frustración. Sin embargo, con la guía adecuada, es posible transformar esas dificultades en logros. Mi apoyo profesional te ayudará a que tu hijo desarrolle sus fortalezas, rinda perfectamente y gane confianza en sí mismo.",
+      details: [
+        "Identificar las barreras que impiden el progreso y cómo superarlas",
+        "Aplicar estrategias personalizadas que faciliten el aprendizaje",
+        "Fomentar la motivación y el gusto por los estudios",
+        "Crear un ambiente en el que el rendimiento académico crezca sin conflictos"
+      ]
+    },
+    {
+      icon: Heart,
+      title: "Superar la ansiedad o la depresión infantil",
+      description: "Cuando ves a tu hijo atrapado en la ansiedad o la tristeza, es como si el mundo se apagara un poco. Es un dolor que va más allá de las palabras, y cada día puede sentirse como una lucha interminable. Pero no tiene por qué ser así. Con mi apoyo, ese sufrimiento puede transformarse en alivio, en días más ligeros y llenos de esperanza. Juntos, vamos a abrir esa ventana, para que puedas ver cómo tu hijo recupera su alegría, sus ganas de jugar, de aprender y de disfrutar de la vida como se merece.",
+      details: [
+        "Identificar los desencadenantes de la ansiedad y la tristeza, y cómo desactivarlos poco a poco",
+        "Enseñar a tu hijo estrategias que le permitan gestionar sus emociones y recuperar su bienestar",
+        "Crear rutinas y espacios seguros que fomenten la calma y la confianza en sí mismo",
+        "Reforzar cada pequeño avance, para que tanto tú como tu hijo veáis cómo la alegría vuelve a formar parte del día a día"
       ]
     },
     {
@@ -178,17 +195,6 @@ const Home = () => {
       ]
     },
     {
-      icon: Heart,
-      title: "Apoyo constante de un profesional que te comprende",
-      description: "No estás solo en este camino. Te acompaño en cada paso del proceso, ofreciéndote apoyo continuo, orientación profesional y la tranquilidad de saber que tienes a alguien que realmente entiende por lo que estás pasando como padre o madre.",
-      details: [
-        "Acompañamiento emocional continuo",
-        "Disponibilidad para consultas",
-        "Comprensión profunda de tu situación",
-        "Apoyo durante todo el proceso"
-      ]
-    },
-    {
       icon: Smile,
       title: "Felicidad para tu hijo y para ti",
       description: "El objetivo final es que tanto tú como tu hijo disfrutéis de una relación más armoniosa y feliz. Trabajamos para que vuestra convivencia sea más placentera, que vuestro vínculo se fortalezca y que ambos sintáis más bienestar en el día a día.",
@@ -199,6 +205,33 @@ const Home = () => {
         "Ambiente familiar positivo y cálido"
       ]
     },
+  ];
+
+  const acompanamientoBenefits = [
+    {
+      icon: Heart,
+      title: "Apoyo constante de un profesional que te comprende",
+      description: "Tratar de ayudar a tu hijo mientras te sientes juzgado, juzgada, y en soledad es desgarrador. Pero no tienes que cargar con esto en solitario. Estoy aquí para caminar a tu lado, ofreciéndote el apoyo que necesitas para que, juntos, transformemos esta carga en un camino de alivio y esperanza. Ya no estás solo, ni sola: lo vamos a conseguir.",
+      details: []
+    },
+    {
+      icon: Brain,
+      title: "La más rigurosa evidencia científica",
+      description: "Aquí no hay soluciones superficiales ni modas pasajeras. Cada intervención que te ofrezco está respaldada por procesos empíricos demostrados, pero no se queda ahí: se aplican con una base filosófica sólida, asegurando que cada paso se dé de la forma correcta. No es solo usar técnicas, es entender profundamente los principios que las hacen funcionar, y eso es lo que realmente permite el cambio.",
+      details: []
+    },
+    {
+      icon: Users,
+      title: "Soluciones personalizadas",
+      description: "Aquí no aplicamos técnicas genéricas. Cada niño es único, y eso es lo que guía mi trabajo. Me tomo el tiempo de conocer quién es tu hijo, su entorno, su realidad. Las soluciones que te ofrezco están hechas a su medida, porque es la única manera de lograr cambios reales. Aquí no hay lotería, hay resultados personalizados que sí funcionan.",
+      details: []
+    },
+    {
+      icon: Shield,
+      title: "Cambios duraderos",
+      description: "Aquí no aplicamos técnicas genéricas. Cada niño es único, y eso es lo que guía mi trabajo. Me tomo el tiempo de conocer quién es tu hijo, su entorno, su realidad. Las soluciones que te ofrezco están hechas a su medida, porque es la única manera de lograr cambios reales. Aquí no hay lotería, hay resultados personalizados que sí funcionan.",
+      details: []
+    }
   ];
 
   const testimonials = [
@@ -374,7 +407,7 @@ const Home = () => {
         </div>
 
         {/* CTA encima de la forma redondeada - Círculo principal */}
-        <Link to="/servicios" className="absolute bottom-[60px] md:bottom-[38px] left-1/2 transform -translate-x-1/2 z-30 group">
+        <Link to="/servicios" className="absolute bottom-[60px] md:bottom-[80px] left-1/2 transform -translate-x-1/2 z-30 group">
           {/* Resplandor de neon alrededor del círculo */}
           <div
             className={`absolute rounded-full blur-md transition-all duration-500 ${laserProgress > 0.8
@@ -392,30 +425,15 @@ const Home = () => {
             </>
           )}
 
-          {/* Bocadillo superior - Solo en ordenador */}
+          {/* Bocadillo inferior - Visible en móvil y escritorio */}
           {laserProgress > 0.8 && (
-            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-40 bottom-full mb-4">
+            <div className="absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-50 top-full mt-4">
               <div className="relative">
                 {/* Resplandor del bocadillo */}
                 <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 via-blue-400/40 to-cyan-400/30 rounded-full blur-sm"></div>
 
                 {/* Contenido del bocadillo */}
                 <div className="relative bg-white rounded-xl px-4 py-2 shadow-lg border border-cyan-400/30">
-                  <span className="text-primary font-semibold text-sm whitespace-nowrap">Empieza ahora</span>
-
-                  {/* Flecha del bocadillo apuntando hacia abajo */}
-                  <div className="absolute w-4 h-4 bg-white left-1/2 -translate-x-1/2 top-full -mt-[1px] rotate-45"></div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Bocadillo inferior - Solo en móvil */}
-          {laserProgress > 0.8 && (
-            <div className="block md:hidden absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none z-40 top-full mt-4">
-              <div className="relative">
-                {/* Contenido del bocadillo */}
-                <div className="relative bg-white rounded-xl px-4 py-2 border border-cyan-400/30">
                   <span className="text-primary font-semibold text-sm whitespace-nowrap">Empieza ahora</span>
 
                   {/* Flecha del bocadillo apuntando hacia arriba */}
@@ -441,7 +459,7 @@ const Home = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-secondary py-16 md:py-24 relative overflow-hidden -mt-[30px] md:mt-0">
+      <section className="bg-secondary py-16 md:py-24 relative -mt-[30px] md:mt-0">
 
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -465,7 +483,7 @@ const Home = () => {
           </h2>
           <div className="max-w-6xl mx-auto">
             <Accordion type="single" collapsible className="space-y-6">
-              {benefits.slice(0, 4).map((benefit, index) => (
+              {benefits.slice(0, 5).map((benefit, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
@@ -560,13 +578,13 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Benefits Section Part 2 - Fondo Blanco */}
-      <section className="bg-background py-16 md:py-24 relative overflow-hidden">
+      {/* Benefits Section Part 2 - Mismo color que la sección anterior */}
+      <section className="bg-secondary py-16 md:py-24 relative overflow-hidden">
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Badge */}
           <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2.5 px-4 py-0.5 bg-primary/10 backdrop-blur-sm border border-primary rounded-full">
+            <div className="inline-flex items-center gap-2.5 px-4 py-0.5 bg-white/50 backdrop-blur-sm border border-primary rounded-full">
               {/* Cerebrito */}
               <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 512 512">
                 <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z" />
@@ -575,19 +593,16 @@ const Home = () => {
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
             El acompañamiento que necesitas
           </h2>
-          <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-12">
-            Más allá de las técnicas, ofrezco comprensión profunda y apoyo constante para transformar la vida de tu familia
-          </p>
 
           <div className="max-w-6xl mx-auto">
             <Accordion type="single" collapsible className="space-y-6">
-              {benefits.slice(4).map((benefit, index) => (
+              {acompanamientoBenefits.map((benefit, index) => (
                 <AccordionItem
-                  key={index + 4}
-                  value={`item-${index + 4}`}
+                  key={index}
+                  value={`acompanamiento-${index}`}
                   className="border-none"
                 >
                   <Card className="shadow-card hover:shadow-soft transition-all duration-300 border-t-4 border-t-primary">
