@@ -537,9 +537,6 @@ const Home = () => {
               <p className="text-lg text-white/90 mb-6">
                 Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porque, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
               </p>
-              <p className="text-lg text-white/90 mb-6">
-                Soy un profesional que realmente se dedica a cada persona de manera genuina. Mi vocación es ayudarte a transformar lo que sucede con todo el rigor de mi formación y la pasión que pongo en cada detalle. Mi objetivo es que confíes en que el cambio de tu hijo está en las mejores manos.
-              </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 w-2 h-2 rounded-full bg-white"></span>

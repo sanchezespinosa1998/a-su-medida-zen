@@ -101,11 +101,11 @@ const Servicios = () => {
                     Más popular
                   </div>
                 )}
-                <div className="relative w-full h-48 overflow-hidden">
+                <div className="relative w-full h-48 overflow-hidden bg-gray-50 flex items-center justify-center">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-full object-contain"
                   />
                 </div>
                 <CardHeader className="flex-shrink-0">
