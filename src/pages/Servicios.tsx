@@ -96,16 +96,11 @@ const Servicios = () => {
                   : ""
                   }`}
               >
-                {service.highlighted && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold z-10">
-                    Más popular
-                  </div>
-                )}
-                <div className="relative w-full h-48 overflow-hidden bg-gray-50 flex items-center justify-center">
+                <div className="relative w-full overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="max-w-full max-h-full object-contain"
+                    className="w-full h-auto object-cover"
                   />
                 </div>
                 <CardHeader className="flex-shrink-0">
