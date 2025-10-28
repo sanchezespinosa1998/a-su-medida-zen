@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Award, BookOpen, Users } from "lucide-react";
-import miguelImage from "@/assets/miguel.jpg";
+import miguelImage from "@/assets/fotoolea.png";
 import formulaokImage from "@/assets/formulaok.jpeg";
 
 const SobreMi = () => {
@@ -81,27 +81,9 @@ const SobreMi = () => {
             <h2 className="text-3xl font-bold mb-6">Mi historia</h2>
             <div className="space-y-4 opacity-90 leading-relaxed">
               <p>
-                De niño, fui diagnosticado con TDAH. Sé lo que es sentirse
-                diferente, luchar con la atención y enfrentar las
-                incomprensiones de un sistema que no siempre está preparado para
-                la neurodiversidad.
+                De pequeño viví el TDAH en primera persona, y sé lo que es sentir que la medicación no te lleva a ningún lado. Lo que realmente hizo la diferencia fue un cambio en mi entorno: algo que me motivó y me hizo querer estudiar. Desde ese momento, mi rendimiento fue en ascenso, y me comprometí al máximo con mis estudios. Hoy, el TDAH es solo una anécdota en mi vida, y me enorgullece decir que soy un ex-TDAH. He aprovechado esa experiencia para potenciarme y ahora ayudar a otros niños y familias a lograr lo mismo: convertir lo que parece un obstáculo en una oportunidad.
               </p>
-              <p>
-                Esa experiencia personal me llevó a la psicología. Quería
-                entender qué me pasaba y, sobre todo, ayudar a otros niños y
-                familias a no sentirse solos en este camino.
-              </p>
-              <p>
-                Hoy, combino mi experiencia personal con una sólida formación
-                científica. No solo entiendo la teoría, sino que comprendo
-                profundamente las emociones y desafíos que viven las familias
-                cada día.
-              </p>
-              <p className="font-semibold">
-                Mi misión es simple: transformar la vida de los niños y sus
-                familias mediante intervenciones basadas en evidencia, con
-                empatía y resultados medibles.
-              </p>
+
             </div>
           </div>
         </div>
@@ -148,8 +130,7 @@ const SobreMi = () => {
                 <li className="flex items-start">
                   <span className="text-primary mr-3 text-xl">✓</span>
                   <span>
-                    Máster en Análisis de Conducta Aplicado (Applied Behavior
-                    Analysis)
+                    Máster en análisis de conducta aplicado al contexto terapéutico
                   </span>
                 </li>
                 <li className="flex items-start">

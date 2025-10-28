@@ -24,7 +24,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import formulaImage from "@/assets/formula-cientifica.jpg";
-import miguelPhoto from "@/assets/miguel.jpg";
+import miguelPhoto from "@/assets/fotoolea.png";
 import recurso4 from "@/assets/Recurso 4.jpeg";
 import recurso14 from "@/assets/Recurso 14.svg";
 import { useState, useEffect, useRef } from "react";
@@ -92,6 +92,7 @@ const TypewriterCycle = () => {
 const Home = () => {
   const [laserProgress, setLaserProgress] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
+  const [popupVisible, setPopupVisible] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const benefitsEndRef = useRef<HTMLDivElement>(null);
 
@@ -115,16 +116,26 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Mostrar popup después de 5 segundos en cada carga de la página
+    // Mostrar popup después de 7 segundos en cada carga de la página
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 5000);
+    }, 7000);
 
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (showPopup) {
+      const t = setTimeout(() => setPopupVisible(true), 20);
+      return () => clearTimeout(t);
+    } else {
+      setPopupVisible(false);
+    }
+  }, [showPopup]);
+
   const handleClosePopup = () => {
-    setShowPopup(false);
+    setPopupVisible(false);
+    setTimeout(() => setShowPopup(false), 300);
   };
 
   const benefits = [
@@ -229,7 +240,7 @@ const Home = () => {
     {
       icon: Shield,
       title: "Cambios duraderos",
-      description: "Aquí no aplicamos técnicas genéricas. Cada niño es único, y eso es lo que guía mi trabajo. Me tomo el tiempo de conocer quién es tu hijo, su entorno, su realidad. Las soluciones que te ofrezco están hechas a su medida, porque es la única manera de lograr cambios reales. Aquí no hay lotería, hay resultados personalizados que sí funcionan.",
+      description: "Los resultados reales no aparecen de un día para otro. Lo importante no es resolver el problema rápido, sino hacerlo bien para que no vuelva. Cada intervención se construye paso a paso, entendiendo a tu hijo y su entorno, y dejando una base firme que resista el tiempo. No trabajo con atajos ni promesas vacías: trabajo para que un día mi ayuda ya no sea necesaria, porque todo quede en su sitio y funcione por sí solo (por supuesto en el menor tiempo posible)",
       details: []
     }
   ];
@@ -535,7 +546,7 @@ const Home = () => {
             <div className="order-2 md:order-1">
               <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Sobre mí</h2>
               <p className="text-lg text-white/90 mb-6">
-                Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porque, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
+                Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas. No solo aplico técnicas, sino que entiendo profundamente cómo funcionan y porqué. Además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada, logrando cambios reales, adaptados y duraderos.
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
@@ -668,10 +679,10 @@ const Home = () => {
 
           {/* Carrusel Container */}
           <div className="relative overflow-hidden">
-            <div className="flex animate-scroll space-x-6">
+            <div className="flex animate-scroll space-x-6" style={{ width: 'max-content' }}>
               {/* Duplicamos los testimonios para el efecto de bucle infinito */}
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <Card key={index} className="flex-shrink-0 w-80 shadow-card hover:shadow-soft transition-shadow">
+              {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
+                <Card key={index} className="flex-shrink-0 w-72 md:w-80 shadow-card hover:shadow-soft transition-shadow">
                   <CardContent className="p-6 space-y-4">
                     <div className="flex text-yellow-500">
                       {[...Array(5)].map((_, i) => (
@@ -754,7 +765,7 @@ const Home = () => {
 
       {/* Popup de Llamada Gratuita */}
       {showPopup && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 transition-opacity duration-300 ease-out ${popupVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 relative">
             {/* Botón de cerrar */}
             <button
