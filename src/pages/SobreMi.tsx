@@ -19,7 +19,7 @@ const SobreMi = () => {
     {
       icon: BookOpen,
       title: "Análisis de Conducta Aplicado",
-      description: "Máster especializado en ABA",
+      description: "Máster especializado en análisis de conducta.",
     },
     {
       icon: Users,
@@ -48,7 +48,7 @@ const SobreMi = () => {
               Psicólogo Infanto-Juvenil Colegiado M-43853
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porque, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
+              Soy Miguel Olea. De niño un TDAH, hoy psicólogo infanto-juvenil. Uno de los pocos especialistas con doble formación en psicología clínica y análisis de conducta. Mi método se basa en ciencia, no en modas, no solo aplico técnicas sino que entiendo profundamente cómo funcionan y porqué, además, para ello, te entiendo a ti y a tu hijo de forma rigurosa, empática y personalizada logrando cambios reales adaptados y duraderos.
             </p>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">

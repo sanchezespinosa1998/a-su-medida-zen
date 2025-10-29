@@ -16,12 +16,17 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Componente para hacer scroll al top en cada cambio de ruta
+// Componente para hacer scroll al top en cada cambio de ruta y trackear con TikTok Pixel
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Trackear cambio de página con TikTok Pixel
+    if (typeof window !== 'undefined' && (window as any).ttq) {
+      (window as any).ttq.page();
+    }
   }, [pathname]);
 
   return null;
