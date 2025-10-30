@@ -28,6 +28,7 @@ import miguelPhoto from "@/assets/fotoolea.png";
 import recurso4 from "@/assets/Recurso 4.jpeg";
 import recurso14 from "@/assets/Recurso 14.svg";
 import { useState, useEffect, useRef } from "react";
+import { trackWhatsAppClick, trackReserveIntent, trackButtonClick } from "@/utils/tiktokPixel";
 
 // Componente para efecto typewriter en bucle
 const TypewriterCycle = () => {
@@ -572,7 +573,12 @@ const Home = () => {
               </ul>
               <div className="mt-8">
                 <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
-                  <Link to="/servicios">Reserva ahora</Link>
+                  <Link 
+                    to="/servicios"
+                    onClick={() => trackButtonClick('Reserva ahora', 'sobre_mi_section')}
+                  >
+                    Reserva ahora
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -650,7 +656,10 @@ const Home = () => {
           </div>
           <div className="text-center mt-12">
             <Button size="lg" asChild variant="outline" className="bg-white text-primary hover:bg-gray-50 border-primary px-6 py-4 text-base md:px-12 md:py-7 md:text-xl transition-transform duration-300 hover:scale-110">
-              <Link to="/servicios">
+              <Link 
+                to="/servicios"
+                onClick={() => trackButtonClick('Consigue lo que quieres para tu hijo hoy', 'acompanamiento_section')}
+              >
                 Consigue lo que quieres para tu hijo hoy
               </Link>
             </Button>
@@ -758,7 +767,12 @@ const Home = () => {
             asChild
             className="text-lg px-8"
           >
-            <Link to="/servicios">Reserva tu cita ahora</Link>
+            <Link 
+              to="/servicios"
+              onClick={() => trackButtonClick('Reserva tu cita ahora', 'final_cta_section')}
+            >
+              Reserva tu cita ahora
+            </Link>
           </Button>
         </div>
       </section>
@@ -793,20 +807,24 @@ const Home = () => {
               </p>
 
               <div className="space-y-3">
-                <Button
-                  size="lg"
-                  className="w-full text-lg px-8"
-                  onClick={handleClosePopup}
-                  asChild
+                <a
+                  href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20solicitar%20la%20llamada%20gratuita%20de%2015%20minutos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackWhatsAppClick('popup_call');
+                    trackReserveIntent('Llamada gratuita');
+                    handleClosePopup();
+                  }}
+                  className="w-full"
                 >
-                  <a
-                    href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20solicitar%20la%20llamada%20gratuita%20de%2015%20minutos"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Button
+                    size="lg"
+                    className="w-full text-lg px-8"
                   >
                     Solicitar llamada gratuita
-                  </a>
-                </Button>
+                  </Button>
+                </a>
 
                 <button
                   onClick={handleClosePopup}

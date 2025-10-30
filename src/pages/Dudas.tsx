@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { MessageCircle } from "lucide-react";
+import { trackWhatsAppClick } from "@/utils/tiktokPixel";
 
 const Dudas = () => {
   const faqs = [
@@ -100,6 +101,7 @@ const Dudas = () => {
               href="https://wa.me/34693054790?text=Hola,%20tengo%20una%20duda%20sobre%20los%20servicios"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('dudas_page')}
             >
               Contactar por WhatsApp
             </a>

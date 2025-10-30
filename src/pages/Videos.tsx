@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
+import { trackWhatsAppClick, trackVideoView, trackButtonClick } from "@/utils/tiktokPixel";
 
 // Importar las imágenes de TikTok
 import tiktok1 from "@/assets/tiktok screenshooot/Screenshot 2025-10-16 091357.png";
@@ -111,6 +112,7 @@ const Videos = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block"
+                    onClick={() => trackVideoView(video.title, video.url)}
                   >
                     {/* Formato vertical de TikTok 9:16 */}
                     <div className="relative aspect-[9/16] overflow-hidden">
@@ -159,6 +161,7 @@ const Videos = () => {
               href="https://www.tiktok.com/@a_su_medida"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackButtonClick('Seguir en TikTok', 'videos_page')}
             >
               Seguir en TikTok
             </a>
@@ -179,6 +182,7 @@ const Videos = () => {
               href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20sesión%20personalizada"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('videos_page')}
             >
               Reserva una sesión personalizada
             </a>

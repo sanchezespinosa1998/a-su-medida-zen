@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Award, BookOpen, Users } from "lucide-react";
 import miguelImage from "@/assets/fotoolea.png";
 import formulaokImage from "@/assets/formulaok.jpeg";
+import { trackWhatsAppClick } from "@/utils/tiktokPixel";
 
 const SobreMi = () => {
   const qualifications = [
@@ -195,6 +196,7 @@ const SobreMi = () => {
                 href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20reservar%20una%20cita"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('sobre_mi_page')}
               >
                 Reserva una cita
               </a>

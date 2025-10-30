@@ -5,6 +5,7 @@ import valoracionImage from "@/assets/valoracion.jpg";
 import asesoriaImage from "@/assets/asesoria-online.jpg";
 import tdahImage from "@/assets/tdah.jpg";
 import cursosOnlineImage from "@/assets/cursos online.jpeg";
+import { trackWhatsAppClick, trackReserveIntent } from "@/utils/tiktokPixel";
 
 const Servicios = () => {
   const services = [
@@ -137,6 +138,10 @@ const Servicios = () => {
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => {
+                          trackWhatsAppClick('servicios_page');
+                          trackReserveIntent(service.title);
+                        }}
                       >
                         Reservar cita
                       </a>

@@ -13,8 +13,16 @@ import Dudas from "./pages/Dudas";
 import SobreMi from "./pages/SobreMi";
 import Videos from "./pages/Videos";
 import NotFound from "./pages/NotFound";
+import { sendTestEvent } from "./utils/tiktokPixel";
 
 const queryClient = new QueryClient();
+
+// Configurar función global para testing desde la consola
+declare global {
+  interface Window {
+    testTikTok?: (code?: string) => void;
+  }
+}
 
 // Componente para hacer scroll al top en cada cambio de ruta y trackear con TikTok Pixel
 const ScrollToTop = () => {
@@ -32,31 +40,43 @@ const ScrollToTop = () => {
   return null;
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/servicios" element={<Servicios />} />
-              <Route path="/dudas" element={<Dudas />} />
-              <Route path="/sobre-mi" element={<SobreMi />} />
-              <Route path="/videos" element={<Videos />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-          <WhatsAppButton />
-        </div>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // Configurar función de test global en el mount
+  useEffect(() => {
+    window.testTikTok = (code?: string) => {
+      sendTestEvent(code || 'TEST51427');
+    };
+    
+    console.log('🧪 Función de test TikTok configurada. Usa: window.testTikTok()');
+    console.log('🧪 Para enviar con código específico: window.testTikTok("TU_CODIGO")');
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/servicios" element={<Servicios />} />
+                <Route path="/dudas" element={<Dudas />} />
+                <Route path="/sobre-mi" element={<SobreMi />} />
+                <Route path="/videos" element={<Videos />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+            <WhatsAppButton />
+          </div>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

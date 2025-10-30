@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { trackWhatsAppClick, trackButtonClick } from "@/utils/tiktokPixel";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -86,6 +87,10 @@ const Header = () => {
                     href="https://wa.me/34693054790"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      trackWhatsAppClick('header_desktop');
+                      trackButtonClick('Reserva ahora', 'header_desktop');
+                    }}
                   >
                     Reserva ahora
                   </a>
@@ -125,7 +130,11 @@ const Header = () => {
                         href="https://wa.me/34693054790"
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={() => {
+                          trackWhatsAppClick('header_mobile');
+                          trackButtonClick('Reserva ahora', 'header_mobile');
+                          setIsMenuOpen(false);
+                        }}
                       >
                         Reserva ahora
                       </a>

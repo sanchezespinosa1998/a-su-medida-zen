@@ -1,11 +1,17 @@
 import { MessageCircle } from "lucide-react";
+import { trackWhatsAppClick } from "@/utils/tiktokPixel";
 
 const WhatsAppButton = () => {
+  const handleClick = () => {
+    trackWhatsAppClick('floating_button');
+  };
+
   return (
     <a
       href="https://wa.me/34693054790?text=Hola,%20me%20gustaría%20recibir%20más%20información"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 group"
       aria-label="Contactar por WhatsApp"
     >
